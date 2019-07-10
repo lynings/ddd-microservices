@@ -16,6 +16,10 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8010/eureka/
 
+
+jwt:
+  secret: xfk!@#$%^&*()xfk!@#$%^&*()xfk!@#$%^&*()
+
 logging:
   level:
     org.springframework.cloud.gateway: debug
