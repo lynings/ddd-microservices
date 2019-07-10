@@ -1,4 +1,4 @@
-package pers.lyning.springcloud.gateway.handler;
+package pers.lyning.springcloud.ordercontext.handler;
 
 import org.springframework.boot.autoconfigure.web.ResourceProperties;
 import org.springframework.boot.autoconfigure.web.reactive.error.AbstractErrorWebExceptionHandler;
@@ -52,8 +52,7 @@ public class GlobalErrorWebExceptionHandler extends AbstractErrorWebExceptionHan
         @Override
         public Map<String, Object> getErrorAttributes(ServerRequest request,
                                                       boolean includeStackTrace) {
-            return super.getErrorAttributes(
-                    request, includeStackTrace);
+            return super.getErrorAttributes(request, includeStackTrace);
         }
     }
 }
