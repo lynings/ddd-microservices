@@ -1,0 +1,11 @@
+rootProject.name = 'springcloud'
+include 'ordercontext'
+include 'usercontext'
+include 'infra-registry'
+include 'infra-config'
+include 'projectcontext'
+include 'paymentcontext'
+include 'notificationcontext'
+include 'ssocontext'
+include 'infra-gateway'
+
