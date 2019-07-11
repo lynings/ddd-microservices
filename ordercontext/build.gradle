@@ -1,15 +1,4 @@
-plugins {
-    id 'java'
-}
-
-group 'pers.lyning.springcloud'
-version '1.0-SNAPSHOT'
-
-sourceCompatibility = 1.8
-
-repositories {
-    mavenCentral()
-}
+mainClassName = 'pers.lyning.springcloud.ordercontext.OrderContextApplication'
 
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-webflux')

@@ -1,5 +1,4 @@
-group 'pers.lyning.springcloud'
-version '1.0-SNAPSHOT'
+mainClassName = 'pers.lyning.springcloud.config.ConfigApplication'
 
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-actuator')

@@ -1,3 +1,9 @@
+mainClassName = 'pers.lyning.springcloud.usercontext.UserContextApplication'
+
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile 'org.springframework.boot:spring-boot-starter-web',
+            'org.springframework.cloud:spring-cloud-starter-openfeign',
+            // jwt tool
+            'io.jsonwebtoken:jjwt:0.9.1',
+            'com.alibaba:fastjson:1.2.58'
 }

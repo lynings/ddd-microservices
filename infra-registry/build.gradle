@@ -1,3 +1,5 @@
+mainClassName = 'pers.lynings.springcloud.registry.RegistryApplication'
+
 bootJar {
     baseName = 'infra-registry'
     version = '0.1'

@@ -1,3 +1,5 @@
+mainClassName = 'pers.lyning.springcloud.gateway.GatewayApplication'
+
 dependencies {
     // jwt tool
     compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1',
