@@ -13,6 +13,7 @@ spring:
 #          password:
           search-paths: CONFIG
     bus:
+      enabled: true
       trace:
         enabled: true
 
