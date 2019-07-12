@@ -8,6 +8,10 @@ DDD 实践
 - [ ] 统一网关 —— gateway
     - [x] 路由分发
     - [x] 统一拦截，身份认证、鉴权
+        - [x] 集成 jwt
+        - [x] 解析 jwt
+        - [x] 申请 jwt
+            - [x] 获取用户信息
     - [ ] 性能调优
 - [ ] 统一配置中心 —— config
     - [x] 热刷新 —— github
@@ -22,11 +26,6 @@ DDD 实践
         - [x] H2 存储
         - [ ] ElasticSearch 存储    
         - [ ] 性能调优
-- [ ] 通用 认证中心
-    - [x] 集成 jwt
-    - [ ] 解析 jwt
-    - [x] 申请 jwt
-        - [x] 获取用户信息
 - [ ] 通知
     - [ ] 集成 rabbitmq
     - [ ] 支持 消息推动
@@ -36,7 +35,6 @@ DDD 实践
     - [ ] 支持阿里云 文件上传下载
     - [ ] 集成 excel 导入导出
     - [ ] 集成 excel 转换 pdf
-    - [ ] Jwt 
     - [ ] spring data jpa
     - [ ] flyway
 - [ ] 代码模型
