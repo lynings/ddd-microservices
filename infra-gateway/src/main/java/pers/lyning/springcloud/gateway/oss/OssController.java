@@ -22,8 +22,8 @@ public class OssController {
     }
 
     @PostMapping
-    public Mono<Token> create(@RequestBody CreateCommand createCommand) {
-        Token token = this.ossService.apply(createCommand);
+    public Mono<Token> create(@RequestBody ApplyTokenCommand applyTokenCommand) {
+        Token token = this.ossService.apply(applyTokenCommand);
         return Mono.just(token);
     }
 

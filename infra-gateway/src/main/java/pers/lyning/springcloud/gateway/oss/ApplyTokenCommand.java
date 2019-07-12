@@ -8,7 +8,7 @@ import lombok.Setter;
  */
 @Setter
 @Getter
-public class CreateCommand {
+public class ApplyTokenCommand {
 
     private String username;
 

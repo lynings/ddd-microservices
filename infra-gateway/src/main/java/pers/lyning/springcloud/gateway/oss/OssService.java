@@ -23,11 +23,11 @@ public class OssService {
     /**
      * 申请
      *
-     * @param createCommand
+     * @param applyTokenCommand
      * @return
      */
-    public Token apply(CreateCommand createCommand) {
-        User user = this.userClient.findByUsername(createCommand.getUsername());
+    public Token apply(ApplyTokenCommand applyTokenCommand) {
+        User user = this.userClient.findByUsername(applyTokenCommand.getUsername());
         Payload payload = new Payload(user);
         return this.jwtProvider.generate(payload);
     }
