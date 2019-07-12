@@ -7,57 +7,75 @@ import org.springframework.cloud.gateway.route.Route;
 import org.springframework.cloud.gateway.support.ServerWebExchangeUtils;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.web.server.ServerWebExchange;
-import pers.lyning.springcloud.gateway.util.UserPermissionUtil;
+import pers.lyning.springcloud.gateway.exception.AuthenticationException;
+import pers.lyning.springcloud.gateway.oss.JwtProvider;
+import pers.lyning.springcloud.gateway.oss.Token;
 import reactor.core.publisher.Mono;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 /**
+ * 认证 filter
+ *
  * @author lyning
  */
 @Configuration
-public class AuthFilter implements GlobalFilter {
+public class AuthenticationFilter implements GlobalFilter {
+
+    private static final List<String> IGNORE_URI = Arrays.asList(
+            "/tokens"
+    );
+
+    private final JwtProvider jwtProvider;
 
     @Autowired
-    private JwtProvider jwtProvider;
+    public AuthenticationFilter(JwtProvider jwtProvider) {
+        this.jwtProvider = jwtProvider;
+    }
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-        Optional<String> token = this.lookupTokenFrom(exchange.getRequest().getHeaders());
-        if (!token.isPresent()) {
-            return chain.filter(exchange.mutate().request(exchange.getRequest()).build());
+        if (this.ignoreRequest(this.getRoute(exchange))) {
+            return chain.filter(exchange);
         }
 
-        if (!UserPermissionUtil.verify(user, request)) {
-            throw new PermissionException("no permission access service, please check");
-        }
-
-
-        Optional<User> userOptional = this.jwtProvider.validate(token.get());
-        ServerHttpRequest request = userOptional
-                .map(user -> this.createServerHttpRequest(exchange, user))
-                .orElseThrow(() -> new PermissionException("user not exist, please check"));
-        return chain.filter(exchange.mutate().request(request).build());
+        Token token = this.lookupTokenFrom(exchange.getRequest().getHeaders());
+        this.validate(token);
+        return chain.filter(exchange);
     }
 
-    private ServerHttpRequest createServerHttpRequest(ServerWebExchange exchange, User user) {
-        return exchange.getRequest()
-                .mutate()
-                .header("x-user-id", user.getId().toString())
-                .header("x-username", user.getUsername())
-                .header("x-user-serviceName", this.findHostFrom(this.getRoute(exchange)))
-                .build();
+    private void validate(Token token) {
+        if (Objects.isNull(token)) {
+            throw AuthenticationException.throwUnauthorized();
+        }
+
+        try {
+            this.jwtProvider.validate(token);
+        } catch (Exception e) {
+            throw AuthenticationException.throwForbidden();
+        }
+    }
+
+    private boolean ignoreRequest(Route route) {
+        String host = this.findHostFrom(route);
+        // 只要包含 被匹配到的 uri，就返回 true
+        return IGNORE_URI.stream()
+                .anyMatch(host::endsWith);
     }
 
     private Route getRoute(ServerWebExchange exchange) {
         return exchange.getRequiredAttribute(ServerWebExchangeUtils.GATEWAY_ROUTE_ATTR);
     }
 
-    private Optional<String> lookupTokenFrom(HttpHeaders headers) {
+    private Token lookupTokenFrom(HttpHeaders headers) {
         String token = headers.getFirst(JwtProvider.HEADER);
-        return Optional.ofNullable(token);
+        return Optional.ofNullable(token)
+                .map(Token::of)
+                .orElse(null);
     }
 
     private String findHostFrom(Route route) {

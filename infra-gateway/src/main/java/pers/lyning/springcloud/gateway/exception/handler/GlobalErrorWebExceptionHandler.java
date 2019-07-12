@@ -1,4 +1,4 @@
-package pers.lyning.springcloud.gateway.handler;
+package pers.lyning.springcloud.gateway.exception.handler;
 
 import org.springframework.boot.autoconfigure.web.ResourceProperties;
 import org.springframework.boot.autoconfigure.web.reactive.error.AbstractErrorWebExceptionHandler;
@@ -18,6 +18,8 @@ import reactor.core.publisher.Mono;
 import java.util.Map;
 
 /**
+ * 统一异常处理
+ *
  * @author lyning
  */
 @Configuration

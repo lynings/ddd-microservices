@@ -7,5 +7,6 @@ dependencies {
             'org.springframework.boot:spring-boot-starter-actuator',
             "org.springframework.boot:spring-boot-starter-webflux",
             'org.springframework.cloud:spring-cloud-starter-gateway',
+            'org.springframework.cloud:spring-cloud-starter-openfeign',
             'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 }

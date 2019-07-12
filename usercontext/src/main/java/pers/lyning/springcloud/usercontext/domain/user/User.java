@@ -8,8 +8,10 @@ import lombok.Getter;
 @Getter
 public class User {
     private final Long id;
+    private final String username;
 
-    public User(final Long id) {
+    public User(Long id, String username) {
         this.id = id;
+        this.username = username;
     }
 }
