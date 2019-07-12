@@ -1,6 +1,5 @@
 package pers.lyning.springcloud.ordercontext.gateways.ohs.data;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,11 +10,10 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class OrderCommand {
 
     /**
-     * 用户 id
+     * 用户 username
      */
     private Long userId;
 }
