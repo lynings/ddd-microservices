@@ -5,10 +5,11 @@ import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.cloud.gateway.route.Route;
 import org.springframework.cloud.gateway.support.ServerWebExchangeUtils;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.server.reactive.ServerHttpRequest;
-import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
+import pers.lyning.springcloud.gateway.util.UserPermissionUtil;
 import reactor.core.publisher.Mono;
 
 import java.util.Optional;
@@ -16,20 +17,25 @@ import java.util.Optional;
 /**
  * @author lyning
  */
-@Component
+@Configuration
 public class AuthFilter implements GlobalFilter {
 
-    private final JwtProvider jwtProvider;
-
     @Autowired
-    public AuthFilter(JwtProvider jwtProvider) {
-        this.jwtProvider = jwtProvider;
-    }
+    private JwtProvider jwtProvider;
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-        String token = this.findTokenFrom(exchange.getRequest().getHeaders());
-        Optional<User> userOptional = this.jwtProvider.validate(token);
+        Optional<String> token = this.lookupTokenFrom(exchange.getRequest().getHeaders());
+        if (!token.isPresent()) {
+            return chain.filter(exchange.mutate().request(exchange.getRequest()).build());
+        }
+
+        if (!UserPermissionUtil.verify(user, request)) {
+            throw new PermissionException("no permission access service, please check");
+        }
+
+
+        Optional<User> userOptional = this.jwtProvider.validate(token.get());
         ServerHttpRequest request = userOptional
                 .map(user -> this.createServerHttpRequest(exchange, user))
                 .orElseThrow(() -> new PermissionException("user not exist, please check"));
@@ -49,8 +55,9 @@ public class AuthFilter implements GlobalFilter {
         return exchange.getRequiredAttribute(ServerWebExchangeUtils.GATEWAY_ROUTE_ATTR);
     }
 
-    private String findTokenFrom(HttpHeaders headers) {
-        return headers.getFirst(JwtProvider.HEADER);
+    private Optional<String> lookupTokenFrom(HttpHeaders headers) {
+        String token = headers.getFirst(JwtProvider.HEADER);
+        return Optional.ofNullable(token);
     }
 
     private String findHostFrom(Route route) {
