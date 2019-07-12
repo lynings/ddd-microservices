@@ -13,6 +13,7 @@ spring:
 
 eureka:
   client:
+    eureka-server-connect-timeout-seconds: 30
     serviceUrl:
       defaultZone: http://localhost:8010/eureka/
 

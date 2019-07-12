@@ -1,0 +1,25 @@
+server:
+  port: 9090
+
+spring:
+  profiles: local
+  cloud:
+    config:
+      server:
+        git:
+          uri: git@github.com:lynings/spring-config-demo.git
+          username:
+          password:
+          search-paths: CONFIG
+          delete-untracked-branches: true
+          timeout: 30
+    bus:
+      trace:
+        enabled: true
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
