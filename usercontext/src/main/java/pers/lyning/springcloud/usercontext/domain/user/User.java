@@ -1,4 +1,4 @@
-package pers.lyning.springcloud.usercontext.domain;
+package pers.lyning.springcloud.usercontext.domain.user;
 
 import lombok.Getter;
 
