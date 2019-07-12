@@ -5,7 +5,6 @@ include 'infra-gateway'
 include 'projectcontext'
 include 'paymentcontext'
 include 'notificationcontext'
-include 'ssocontext'
 include 'ordercontext'
 include 'usercontext'
 
