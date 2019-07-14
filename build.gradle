@@ -56,11 +56,6 @@ subprojects {
     dependencies {
         compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.8'
         annotationProcessor 'org.projectlombok:lombok:1.18.8'
-
-        testCompile 'org.junit.jupiter:junit-jupiter-api'
-        testCompile 'org.junit.jupiter:junit-jupiter-params'
-        testRuntime 'org.junit.jupiter:junit-jupiter-engine'
-        testCompile('org.springframework.boot:spring-boot-starter-test')
     }
 
 
@@ -74,7 +69,18 @@ subprojects {
 ["ordercontext", "usercontext"].each { service ->
     project(":$service") {
         dependencies {
-            compile('org.springframework.boot:spring-boot-starter-data-jpa')
+            testCompile 'com.h2database:h2:1.4.199',
+                    'org.junit.jupiter:junit-jupiter-api',
+                    'org.junit.jupiter:junit-jupiter-params',
+                    'org.junit.jupiter:junit-jupiter-engine',
+                    'org.springframework.boot:spring-boot-starter-test'
+            
+            compile 'org.springframework.boot:spring-boot-starter-data-jpa',
+                    // db version control
+                    'org.flywaydb:flyway-core:5.2.4'
         }
+
+        // 集成测试配置
+        apply from: rootProject.file('integration-test.gradle')
     }
 }

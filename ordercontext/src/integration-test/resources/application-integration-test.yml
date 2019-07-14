@@ -1,0 +1,38 @@
+server:
+  port: 0
+spring:
+  profiles: integration-test
+
+  # rabbitmq 配置
+  rabbitmq:
+    port: 5672
+    host: localhost
+    username: guest
+    password: guest
+
+  # spring data jpa configure
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    open-in-view: true
+    database-platform: org.hibernate.dialect.H2Dialect
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+
+  # H2 DATABASE CONFIG
+  datasource:
+    url: jdbc:h2:mem:db
+    platform: h2
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
+  h2:
+    console:
+      enabled: true
+      path: /console
+      settings:
+        trace: false
+        web-allow-others: false

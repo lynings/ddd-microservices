@@ -36,8 +36,10 @@ DDD 实践
     - [ ] 集成 excel 导入导出
     - [ ] 集成 excel 转换 pdf
     - [x] spring data jpa
-    - [ ] flyway
-    - [ ] spring rest doc
+    - [x] flyway （数据库版本控制）
+    - [ ] spring rest doc (自动生成 api 文档)
+        - [ ] demo
+        - [ ] 线上统一访问
 - [ ] 代码模型
     - [ ] 模块边界
     - [ ] 分包原则
@@ -48,6 +50,9 @@ DDD 实践
     - [x] junit 5
     - [ ] demo
 - [ ] 集成测试环境
+    - [x] h2
+    - [ ] spring boot test
+    - [ ] demo
 - [ ] CI 
 - [ ] CD
 - [ ] Docker
