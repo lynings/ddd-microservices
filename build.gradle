@@ -39,7 +39,7 @@ subprojects {
             testOutputDir = file("$buildDir/classes/java/test/")
         }
     }
-    
+
     dependencyManagement {
         imports {
             mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Greenwich.SR2'
@@ -52,11 +52,29 @@ subprojects {
         maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
         mavenCentral()
     }
-    
+
     dependencies {
         compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.8'
         annotationProcessor 'org.projectlombok:lombok:1.18.8'
-        
+
+        testCompile 'org.junit.jupiter:junit-jupiter-api'
+        testCompile 'org.junit.jupiter:junit-jupiter-params'
+        testRuntime 'org.junit.jupiter:junit-jupiter-engine'
         testCompile('org.springframework.boot:spring-boot-starter-test')
+    }
+
+
+    test {
+        useJUnitPlatform {
+            includeEngines 'junit-jupiter'
+        }
+    }
+}
+
+["ordercontext", "usercontext"].each { service ->
+    project(":$service") {
+        dependencies {
+            compile('org.springframework.boot:spring-boot-starter-data-jpa')
+        }
     }
 }

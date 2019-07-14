@@ -31,20 +31,22 @@ DDD 实践
     - [ ] 支持 消息推动
     - [ ] 支持 接收消息 并转换成 pojo
     - [ ] 支持 消息延迟
-- [ ] 通用基础设施
+- [ ] 通用工具
     - [ ] 支持阿里云 文件上传下载
     - [ ] 集成 excel 导入导出
     - [ ] 集成 excel 转换 pdf
-    - [ ] spring data jpa
+    - [x] spring data jpa
     - [ ] flyway
+    - [ ] spring rest doc
 - [ ] 代码模型
     - [ ] 模块边界
     - [ ] 分包原则
     - [ ] 各层职责
 - [ ] 单元测试环境
     - [ ] assertJ 集成
-    - [ ] jacoco 
-    - [ ] junit 5
+    - [x] jacoco
+    - [x] junit 5
+    - [ ] demo
 - [ ] 集成测试环境
 - [ ] CI 
 - [ ] CD
