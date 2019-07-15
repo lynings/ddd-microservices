@@ -1,4 +1,4 @@
-package pers.lyning.springcloud.coreddd.annotation.domain;
+package pers.lyning.springcloud.corestandard.ddd.annotation.domain;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

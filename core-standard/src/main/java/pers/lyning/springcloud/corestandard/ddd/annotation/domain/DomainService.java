@@ -1,16 +1,19 @@
-package pers.lyning.springcloud.coreddd.annotation.application;
+package pers.lyning.springcloud.corestandard.ddd.annotation.domain;
 
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+/**
+ * 声明为 领域服务
+ *
+ * @author lyning
+ */
 @Service
-@Transactional
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ApplicationService {
+public @interface DomainService {
 }
