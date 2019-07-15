@@ -18,9 +18,9 @@ public class AggregateId {
     @Column(columnDefinition = "bigint")
     @Getter
     @Setter
-    private String aggregateId;
+    private Long aggregateId;
 
-    public String getId() {
+    public Long getId() {
         return this.aggregateId;
     }
 }
