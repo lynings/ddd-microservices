@@ -1,4 +1,4 @@
-package pers.lyning.springcloud.patientcontext.application.user;
+package pers.lyning.springcloud.patientcontext.application.patient;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -8,7 +8,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class FindOneUserQuery {
+public class FindOnePatientQuery {
 
     private String username;
 }

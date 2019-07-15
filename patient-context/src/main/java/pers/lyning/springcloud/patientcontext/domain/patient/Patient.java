@@ -1,4 +1,4 @@
-package pers.lyning.springcloud.patientcontext.domain.user;
+package pers.lyning.springcloud.patientcontext.domain.patient;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -15,9 +15,9 @@ import java.io.Serializable;
 @Getter
 @Setter
 @Entity
-@javax.persistence.Table(name = "users")
-@org.hibernate.annotations.Table(appliesTo = "users", comment = "用户信息")
-public class User extends AbstractEntity implements Serializable {
+@javax.persistence.Table(name = "patients")
+@org.hibernate.annotations.Table(appliesTo = "patients", comment = "患者信息")
+public class Patient extends AbstractEntity implements Serializable {
 
     private static final long serialVersionUID = 1547402469349165908L;
 
@@ -32,7 +32,7 @@ public class User extends AbstractEntity implements Serializable {
      */
     private final String username;
 
-    public User(final AggregateId aggregateId, final String username) {
+    public Patient(final AggregateId aggregateId, final String username) {
         this.aggregateId = aggregateId;
         this.username = username;
     }

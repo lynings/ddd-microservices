@@ -1,31 +1,32 @@
-package pers.lyning.springcloud.patientcontext.application.user;
+package pers.lyning.springcloud.patientcontext.application.patient;
 
 import pers.lyning.springcloud.corestandard.ddd.annotation.application.ApplicationService;
-import pers.lyning.springcloud.patientcontext.domain.user.User;
+import pers.lyning.springcloud.corestandard.ddd.support.domain.AggregateId;
+import pers.lyning.springcloud.patientcontext.domain.patient.Patient;
 
 /**
  * @author lyning
  */
 @ApplicationService
-public class UserAppService {
+public class PatientAppService {
 
     /**
-     * 获取 用户信息
+     * 获取 患者信息
      *
      * @param id patient id
-     * @return 用户信息
+     * @return 患者信息
      */
-    public User obtainUserInfo(final Long id) {
-        return new User(id, id.toString());
+    public Patient obtainPatientInfo(final Long id) {
+        return new Patient(new AggregateId(id), id.toString());
     }
 
     /**
-     * 获取 用户信息
+     * 获取 患者信息
      *
      * @param query query params
-     * @return 用户信息
+     * @return 患者信息
      */
-    public User obtainUserInfo(final FindOneUserQuery query) {
-        return new User(1L, query.getUsername());
+    public Patient obtainPatientInfo(final FindOnePatientQuery query) {
+        return new Patient(new AggregateId(1L), query.getUsername());
     }
 }

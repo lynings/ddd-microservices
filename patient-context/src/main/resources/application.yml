@@ -2,7 +2,7 @@ spring:
   profiles:
     active: local
   application:
-    name: user-service
+    name: patient-service
 
   # 开启 bus 追踪，用于热刷新
   cloud:
@@ -37,4 +37,4 @@ eureka:
 ribbon:
   eager-load:
     enabled: true
-    clients: user-service
+    clients: patient-service

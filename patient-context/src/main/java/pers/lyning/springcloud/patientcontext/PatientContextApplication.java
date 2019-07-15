@@ -1,4 +1,4 @@
-package pers.lyning.springcloud.usercontext;
+package pers.lyning.springcloud.patientcontext;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,9 +17,9 @@ import org.springframework.web.reactive.config.EnableWebFlux;
 @EnableFeignClients
 @EnableWebFlux
 @EnableJpaAuditing
-public class UserContextApplication {
+public class PatientContextApplication {
 
     public static void main(final String[] args) {
-        SpringApplication.run(UserContextApplication.class, args);
+        SpringApplication.run(PatientContextApplication.class, args);
     }
 }

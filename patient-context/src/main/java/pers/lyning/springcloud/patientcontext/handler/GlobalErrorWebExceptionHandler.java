@@ -1,4 +1,4 @@
-package pers.lyning.springcloud.usercontext.handler;
+package pers.lyning.springcloud.patientcontext.handler;
 
 import org.springframework.boot.autoconfigure.web.ResourceProperties;
 import org.springframework.boot.autoconfigure.web.reactive.error.AbstractErrorWebExceptionHandler;
@@ -24,9 +24,9 @@ import java.util.Map;
 @Order(-2)
 public class GlobalErrorWebExceptionHandler extends AbstractErrorWebExceptionHandler {
 
-    public GlobalErrorWebExceptionHandler(GlobalErrorAttributes globalErrorAttributes,
-                                          ApplicationContext applicationContext,
-                                          ServerCodecConfigurer serverCodecConfigurer) {
+    public GlobalErrorWebExceptionHandler(final GlobalErrorAttributes globalErrorAttributes,
+                                          final ApplicationContext applicationContext,
+                                          final ServerCodecConfigurer serverCodecConfigurer) {
         super(globalErrorAttributes, new ResourceProperties(), applicationContext);
         super.setMessageWriters(serverCodecConfigurer.getWriters());
         super.setMessageReaders(serverCodecConfigurer.getReaders());
@@ -50,8 +50,8 @@ public class GlobalErrorWebExceptionHandler extends AbstractErrorWebExceptionHan
     static class GlobalErrorAttributes extends DefaultErrorAttributes {
 
         @Override
-        public Map<String, Object> getErrorAttributes(ServerRequest request,
-                                                      boolean includeStackTrace) {
+        public Map<String, Object> getErrorAttributes(final ServerRequest request,
+                                                      final boolean includeStackTrace) {
             return super.getErrorAttributes(request, includeStackTrace);
         }
     }

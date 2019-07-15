@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pers.lyning.springcloud.patientcontext.application.user.FindOneUserQuery;
-import pers.lyning.springcloud.patientcontext.application.user.UserAppService;
-import pers.lyning.springcloud.patientcontext.domain.user.User;
+import pers.lyning.springcloud.patientcontext.application.patient.FindOnePatientQuery;
+import pers.lyning.springcloud.patientcontext.application.patient.PatientAppService;
+import pers.lyning.springcloud.patientcontext.domain.patient.Patient;
 import reactor.core.publisher.Mono;
 
 /**
@@ -16,37 +16,37 @@ import reactor.core.publisher.Mono;
  */
 @Slf4j
 @RestController
-@RequestMapping("/users")
-public class UserController {
+@RequestMapping("/patients")
+public class PatientController {
 
-    private final UserAppService userAppService;
+    private final PatientAppService patientAppService;
 
     @Autowired
-    public UserController(final UserAppService userAppService) {
-        this.userAppService = userAppService;
+    public PatientController(final PatientAppService patientAppService) {
+        this.patientAppService = patientAppService;
     }
 
     /**
-     * 通过 username 获取用户
+     * 通过 username 获取患者
      *
      * @param id 用户名
      * @return patient info
      */
     @GetMapping("/{id}")
-    public Mono<User> findById(@PathVariable("id") final Long id) {
-        final User user = this.userAppService.obtainUserInfo(id);
-        return Mono.justOrEmpty(user);
+    public Mono<Patient> findById(@PathVariable("id") final Long id) {
+        final Patient patient = this.patientAppService.obtainPatientInfo(id);
+        return Mono.justOrEmpty(patient);
     }
 
     /**
-     * 通过 username 获取用户
+     * 通过 username 获取患者
      *
      * @param query 查询参数
      * @return patient info
      */
     @GetMapping
-    public Mono<User> findOneByParams(final FindOneUserQuery query) {
-        final User user = this.userAppService.obtainUserInfo(query);
-        return Mono.justOrEmpty(user);
+    public Mono<Patient> findOneByParams(final FindOnePatientQuery query) {
+        final Patient patient = this.patientAppService.obtainPatientInfo(query);
+        return Mono.justOrEmpty(patient);
     }
 }
