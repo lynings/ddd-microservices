@@ -45,7 +45,7 @@ DDD 实践
     - [ ] 分包原则
     - [ ] 各层职责
 - [ ] 单元测试环境
-    - [ ] assertJ 集成
+    - [x] assertJ 集成
     - [x] jacoco
     - [x] junit 5
     - [ ] demo

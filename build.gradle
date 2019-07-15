@@ -16,7 +16,7 @@ allprojects {
     apply plugin: 'idea'
     apply plugin: 'jacoco'
 
-    group 'pers.lyning.springcloud'
+    group 'pers.lyning.medical'
     version '1.0'
 
     sourceCompatibility = 1.8
@@ -25,7 +25,7 @@ allprojects {
 
 subprojects {
     apply plugin: 'io.spring.dependency-management'
-    
+
     dependencyManagement {
         imports {
             mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Greenwich.SR2'
@@ -55,22 +55,27 @@ subprojects {
 ["order-context", "patient-context", "nursing-context", "nurse-context"].each { service ->
     project(":$service") {
         apply plugin: 'application'
-        
+
         dependencies {
             runtime 'mysql:mysql-connector-java:5.1.47'
 
             compile 'org.flywaydb:flyway-core:5.2.4',
                     // 依赖 ddd 规范
                     project(":core-standard")
-
+            
+            
+            testCompile ('org.springframework.boot:spring-boot-starter-test') {
+                exclude group: 'junit', module: 'junit;'
+            }
+            
             testCompile 'com.h2database:h2:1.4.199',
+                    
                     'org.junit.jupiter:junit-jupiter-api',
                     'org.junit.jupiter:junit-jupiter-params',
                     'org.junit.jupiter:junit-jupiter-engine',
-                    'org.springframework.boot:spring-boot-starter-test'
+                    
+                    'org.springframework.restdocs:spring-restdocs-mockmvc',
+                    'org.springframework.restdocs:spring-restdocs-webtestclient'
         }
-
-        // 集成测试配置
-        apply from: rootProject.file('integration-test.gradle')
     }
 }

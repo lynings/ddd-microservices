@@ -1,4 +1,4 @@
-rootProject.name = 'springcloud'
+rootProject.name = 'medical'
 include 'core-standard'
 include 'infra-registry'
 include 'infra-config'

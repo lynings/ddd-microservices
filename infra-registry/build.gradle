@@ -1,7 +1,7 @@
 apply plugin: 'application'
 apply plugin: 'org.springframework.boot'
 
-mainClassName = 'pers.lynings.springcloud.registry.RegistryApplication'
+mainClassName = 'pers.lynings.medical.registry.RegistryApplication'
 
 bootJar {
     baseName = 'infra-registry'

@@ -1,0 +1,36 @@
+package pers.lyning.medical.gateway.oss;
+
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import pers.lyning.medical.gateway.gateway.acl.patient.Patient;
+import pers.lyning.medical.gateway.gateway.acl.patient.Permission;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * @author lyning
+ */
+@Setter
+@NoArgsConstructor
+public class Payload {
+
+    private String name;
+    private String username;
+    private List<Permission> permissions;
+
+    public Payload(final Patient patient) {
+        this.name = patient.getName();
+        this.username = patient.getUsername();
+        this.permissions = patient.getPermissions();
+    }
+
+    public Map<String, Object> asMap() {
+        final Map<String, Object> map = new HashMap<>();
+        map.put("name", Payload.this.name);
+        map.put("username", Payload.this.username);
+        map.put("permissions", Payload.this.permissions);
+        return map;
+    }
+}
