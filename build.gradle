@@ -69,15 +69,17 @@ subprojects {
 ["ordercontext", "usercontext"].each { service ->
     project(":$service") {
         dependencies {
+            runtime 'mysql:mysql-connector-java:5.1.47'
+
+            compile 'org.flywaydb:flyway-core:5.2.4',
+                    // 依赖 ddd 规范
+                    project(":core-standard")
+
             testCompile 'com.h2database:h2:1.4.199',
                     'org.junit.jupiter:junit-jupiter-api',
                     'org.junit.jupiter:junit-jupiter-params',
                     'org.junit.jupiter:junit-jupiter-engine',
                     'org.springframework.boot:spring-boot-starter-test'
-            
-            compile 'org.springframework.boot:spring-boot-starter-data-jpa',
-                    // db version control
-                    'org.flywaydb:flyway-core:5.2.4'
         }
 
         // 集成测试配置
