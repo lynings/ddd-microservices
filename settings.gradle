@@ -1,4 +1,5 @@
 rootProject.name = 'springcloud'
+include 'core-ddd'
 include 'infra-registry'
 include 'infra-config'
 include 'infra-gateway'
