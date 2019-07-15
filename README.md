@@ -53,6 +53,7 @@ DDD 实践
     - [x] h2
     - [ ] spring boot test
     - [ ] demo
+    - [ ] contract test
 - [ ] CI 
 - [ ] CD
 - [ ] Docker
