@@ -1,0 +1,17 @@
+apply plugin: 'application'
+apply plugin: 'org.springframework.boot'
+
+mainClassName = 'pers.lyning.springcloud.usercontext.UserContextApplication'
+
+dependencies {
+    compile 'org.springframework.boot:spring-boot-starter-webflux',
+            'org.springframework.cloud:spring-cloud-starter-openfeign',
+            'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client',
+
+            'org.springframework.boot:spring-boot-starter-actuator',
+            'org.springframework.boot:spring-boot-starter-security',
+            'org.springframework.cloud:spring-cloud-starter-config',
+            'org.springframework.cloud:spring-cloud-starter-bus-amqp',
+
+            'org.springframework.boot:spring-boot-devtools'
+}

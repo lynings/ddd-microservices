@@ -1,9 +1,0 @@
-mainClassName = 'pers.lyning.springcloud.usercontext.UserContextApplication'
-
-dependencies {
-    compile('org.springframework.boot:spring-boot-starter-webflux')
-    compile('org.springframework.cloud:spring-cloud-starter-openfeign')
-    compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
-
-    compile 'org.springframework.boot:spring-boot-devtools'
-}

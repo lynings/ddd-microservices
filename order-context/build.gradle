@@ -1,0 +1,19 @@
+apply plugin: 'application'
+apply plugin: 'org.springframework.boot'
+
+mainClassName = 'pers.lyning.springcloud.ordercontext.OrderContextApplication'
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-webflux')
+    compile('org.springframework.boot:spring-boot-starter-actuator')
+    compile('org.springframework.boot:spring-boot-starter-security')
+    compile('org.springframework.cloud:spring-cloud-starter-openfeign')
+    compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
+    compile('org.springframework.cloud:spring-cloud-starter-config')
+    compile('org.springframework.cloud:spring-cloud-starter-bus-amqp')
+
+    compile 'org.springframework.boot:spring-boot-devtools'
+    compile 'io.github.openfeign:feign-okhttp'
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
