@@ -5,7 +5,7 @@ import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-import pers.lyning.medical.corestandard.support.jpa.LocalDateTimeConverter;
+import pers.lyning.medical.corestandard.model.support.jpa.LocalDateTimeConverter;
 
 import javax.persistence.Column;
 import javax.persistence.Convert;

@@ -1,4 +1,4 @@
-package pers.lyning.medical.corestandard.support.jpa;
+package pers.lyning.medical.corestandard.model.support;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
