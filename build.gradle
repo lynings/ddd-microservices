@@ -4,10 +4,6 @@ plugins {
     id 'org.springframework.boot' version '2.1.6.RELEASE'
 }
 
-apply plugin: 'java'
-apply plugin: 'org.springframework.boot'
-apply plugin: 'io.spring.dependency-management'
-
 repositories {
     mavenLocal()
     maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
@@ -28,18 +24,8 @@ allprojects {
 }
 
 subprojects {
-    apply plugin: 'application'
-    apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
-
-    idea {
-        module {
-            inheritOutputDirs = false
-            outputDir = file("$buildDir/classes/java/main/")
-            testOutputDir = file("$buildDir/classes/java/test/")
-        }
-    }
-
+    
     dependencyManagement {
         imports {
             mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Greenwich.SR2'
@@ -66,8 +52,10 @@ subprojects {
     }
 }
 
-["ordercontext", "usercontext"].each { service ->
+["order-context", "patient-context", "nursing-context", "nurse-context"].each { service ->
     project(":$service") {
+        apply plugin: 'application'
+        
         dependencies {
             runtime 'mysql:mysql-connector-java:5.1.47'
 
