@@ -2,8 +2,8 @@ package pers.lyning.springcloud.gateway.oss;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pers.lyning.springcloud.gateway.gateway.acl.user.User;
-import pers.lyning.springcloud.gateway.gateway.acl.user.UserClient;
+import pers.lyning.springcloud.gateway.gateway.acl.patient.Patient;
+import pers.lyning.springcloud.gateway.gateway.acl.patient.PatientClient;
 
 /**
  * @author lyning
@@ -12,12 +12,12 @@ import pers.lyning.springcloud.gateway.gateway.acl.user.UserClient;
 public class OssService {
 
     private final JwtProvider jwtProvider;
-    private final UserClient userClient;
+    private final PatientClient patientClient;
 
     @Autowired
-    public OssService(JwtProvider jwtProvider, UserClient userClient) {
+    public OssService(final JwtProvider jwtProvider, final PatientClient patientClient) {
         this.jwtProvider = jwtProvider;
-        this.userClient = userClient;
+        this.patientClient = patientClient;
     }
 
     /**
@@ -26,9 +26,9 @@ public class OssService {
      * @param applyTokenCommand
      * @return
      */
-    public Token apply(ApplyTokenCommand applyTokenCommand) {
-        User user = this.userClient.findByUsername(applyTokenCommand.getUsername());
-        Payload payload = new Payload(user);
+    public Token apply(final ApplyTokenCommand applyTokenCommand) {
+        final Patient patient = this.patientClient.obtainByUsername(applyTokenCommand.getUsername());
+        final Payload payload = new Payload(patient);
         return this.jwtProvider.generate(payload);
     }
 
@@ -38,7 +38,7 @@ public class OssService {
      * @param token
      * @return
      */
-    public Token renew(Token token) {
+    public Token renew(final Token token) {
         return this.jwtProvider.renew(token);
     }
 }

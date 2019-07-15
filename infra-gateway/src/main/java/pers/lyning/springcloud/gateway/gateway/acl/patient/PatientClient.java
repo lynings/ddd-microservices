@@ -1,4 +1,4 @@
-package pers.lyning.springcloud.gateway.gateway.acl.user;
+package pers.lyning.springcloud.gateway.gateway.acl.patient;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author lyning
  */
 @FeignClient(name = "patient-service")
-public interface UserClient {
+public interface PatientClient {
 
     /**
-     * 根据 username 获取用户信息
+     * 根据 username 获取患者信息
      *
-     * @param username 用户名
-     * @return 用户信息
+     * @param username 患者用户名
+     * @return 患者信息
      */
-    @GetMapping("/users")
-    User findByUsername(@RequestParam("username") String username);
+    @GetMapping("/patients")
+    Patient obtainByUsername(@RequestParam("username") String username);
 }

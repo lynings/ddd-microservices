@@ -1,4 +1,4 @@
-package pers.lyning.springcloud.gateway.gateway.acl.user;
+package pers.lyning.springcloud.gateway.gateway.acl.patient;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,7 +10,7 @@ import java.util.List;
  */
 @Getter
 @AllArgsConstructor
-public class User {
+public class Patient {
 
     private final String username;
 

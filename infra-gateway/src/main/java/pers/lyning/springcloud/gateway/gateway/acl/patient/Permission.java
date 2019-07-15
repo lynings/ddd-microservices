@@ -1,4 +1,4 @@
-package pers.lyning.springcloud.gateway.gateway.acl.user;
+package pers.lyning.springcloud.gateway.gateway.acl.patient;
 
 import lombok.Getter;
 import lombok.Setter;

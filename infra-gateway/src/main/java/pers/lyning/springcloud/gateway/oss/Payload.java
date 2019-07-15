@@ -2,8 +2,8 @@ package pers.lyning.springcloud.gateway.oss;
 
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import pers.lyning.springcloud.gateway.gateway.acl.user.Permission;
-import pers.lyning.springcloud.gateway.gateway.acl.user.User;
+import pers.lyning.springcloud.gateway.gateway.acl.patient.Patient;
+import pers.lyning.springcloud.gateway.gateway.acl.patient.Permission;
 
 import java.util.HashMap;
 import java.util.List;
@@ -20,14 +20,14 @@ public class Payload {
     private String username;
     private List<Permission> permissions;
 
-    public Payload(User user) {
-        this.name = user.getName();
-        this.username = user.getUsername();
-        this.permissions = user.getPermissions();
+    public Payload(final Patient patient) {
+        this.name = patient.getName();
+        this.username = patient.getUsername();
+        this.permissions = patient.getPermissions();
     }
 
     public Map<String, Object> asMap() {
-        Map<String, Object> map = new HashMap<>();
+        final Map<String, Object> map = new HashMap<>();
         map.put("name", Payload.this.name);
         map.put("username", Payload.this.username);
         map.put("permissions", Payload.this.permissions);
