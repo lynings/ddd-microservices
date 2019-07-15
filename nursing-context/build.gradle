@@ -1,0 +1,8 @@
+apply plugin: 'application'
+apply plugin: 'org.springframework.boot'
+
+mainClassName = 'pers.lyning.medical.nursingcontext.NursingApplication'
+
+dependencies {
+    compile 'org.springframework.boot:spring-boot-starter-webflux'
+}
