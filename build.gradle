@@ -21,7 +21,7 @@ allprojects {
     apply plugin: 'jacoco'
 
     group 'pers.lyning.springcloud'
-    version '1.0-SNAPSHOT'
+    version '1.0'
 
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
