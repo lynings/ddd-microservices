@@ -1,11 +1,12 @@
 package pers.lyning.medical.patientcontext.domain.patient;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pers.lyning.medical.corestandard.ddd.support.domain.AggregateId;
 import pers.lyning.medical.corestandard.model.AbstractEntity;
 
-import javax.persistence.Embedded;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import java.io.Serializable;
 
@@ -15,6 +16,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
 @javax.persistence.Table(name = "patients")
 @org.hibernate.annotations.Table(appliesTo = "patients", comment = "患者信息")
 public class Patient extends AbstractEntity implements Serializable {
@@ -24,13 +26,13 @@ public class Patient extends AbstractEntity implements Serializable {
     /**
      * 聚合根id
      */
-    @Embedded
-    private final AggregateId aggregateId;
+    @EmbeddedId
+    private AggregateId aggregateId;
 
     /**
      * 用户名
      */
-    private final String username;
+    private String username;
 
     public Patient(final AggregateId aggregateId, final String username) {
         this.aggregateId = aggregateId;
