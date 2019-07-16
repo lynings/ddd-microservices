@@ -38,7 +38,7 @@ DDD 实践
     - [x] spring data jpa
     - [x] flyway （数据库版本控制）
     - [ ] spring rest doc (自动生成 api 文档)
-        - [ ] demo
+        - [x] demo
         - [ ] 线上统一访问
 - [ ] 代码模型
     - [ ] 模块边界

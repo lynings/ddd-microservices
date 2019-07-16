@@ -1,0 +1,7 @@
+server:
+  port: 0
+spring:
+  profiles: test
+
+jwt:
+  secret: xfk!@#$%^&*()xfk!@#$%^&*()xfk!@#$%^&*()

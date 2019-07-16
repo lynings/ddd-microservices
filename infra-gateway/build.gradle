@@ -13,20 +13,11 @@ dependencies {
             'org.springframework.cloud:spring-cloud-starter-openfeign',
             'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 
-    testCompile ('org.springframework.boot:spring-boot-starter-test') {
+    testCompile('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'junit', module: 'junit;'
     }
 
-    testCompile 'com.h2database:h2:1.4.199',
-
-            'org.junit.jupiter:junit-jupiter-api',
-            'org.junit.jupiter:junit-jupiter-params',
-            'org.junit.jupiter:junit-jupiter-engine',
-
-            'org.springframework.restdocs:spring-restdocs-mockmvc',
-            'org.springframework.restdocs:spring-restdocs-webtestclient'
+    testCompile 'com.h2database:h2:1.4.199'
 }
-
-
-// 集成测试配置
-apply from: rootProject.file('integration-test.gradle')
+// 集成 spring rest doc
+apply from: rootProject.file('api-document.gradle')

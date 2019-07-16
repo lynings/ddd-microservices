@@ -2,7 +2,7 @@ package pers.lyning.medical.gateway.util;
 
 
 import org.springframework.http.server.reactive.ServerHttpRequest;
-import pers.lyning.medical.gateway.gateway.acl.patient.Patient;
+import pers.lyning.medical.gateway.client.patient.Patient;
 
 /**
  * @author lyning

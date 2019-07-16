@@ -2,8 +2,8 @@ package pers.lyning.medical.gateway.oss;
 
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import pers.lyning.medical.gateway.gateway.acl.patient.Patient;
-import pers.lyning.medical.gateway.gateway.acl.patient.Permission;
+import pers.lyning.medical.gateway.client.patient.Patient;
+import pers.lyning.medical.gateway.client.patient.Permission;
 
 import java.util.HashMap;
 import java.util.List;

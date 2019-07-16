@@ -1,21 +1,26 @@
 package pers.lyning.medical.gateway.oss;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotNull;
+import java.util.Objects;
 import java.util.Optional;
 
 /**
  * @author lyning
  */
 @Getter
+@NoArgsConstructor
 public class Token {
 
     private final static String TOKEN_PREFIX = "Bearer ";
 
-    private final String value;
+    @NotNull
+    private String token;
 
-    private Token(final String value) {
-        this.value = value;
+    private Token(final String token) {
+        this.token = token;
     }
 
     /**
@@ -38,8 +43,24 @@ public class Token {
      * @return
      */
     String refining() {
-        return Optional.of(this.value)
+        return Optional.of(this.token)
                 .map(o -> o.replaceAll(TOKEN_PREFIX, ""))
                 .get();
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || this.getClass() != o.getClass()) {
+            return false;
+        }
+        return Objects.equals(this.token, ((Token) o).getToken());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.token);
     }
 }

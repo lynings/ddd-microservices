@@ -12,24 +12,30 @@ import reactor.core.publisher.Mono;
  */
 @RestController
 @RequestMapping("/tokens")
-public class OssController {
+public class TokenController {
 
-    private final OssService ossService;
+    private final TokenService tokenService;
 
     @Autowired
-    public OssController(final OssService ossService) {
-        this.ossService = ossService;
+    public TokenController(final TokenService tokenService) {
+        this.tokenService = tokenService;
     }
 
+    /**
+     * 申请 token
+     *
+     * @param applyTokenCommand body 参数
+     * @return
+     */
     @PostMapping
-    public Mono<Token> create(@RequestBody final ApplyTokenCommand applyTokenCommand) {
-        final Token token = this.ossService.apply(applyTokenCommand);
+    public Mono<Token> applyToken(@RequestBody final ApplyTokenCommand applyTokenCommand) {
+        final Token token = this.tokenService.apply(applyTokenCommand);
         return Mono.just(token);
     }
 
     @PostMapping("/refresh")
-    public Mono<Token> create(@RequestBody final Token token) {
-        final Token newToken = this.ossService.renew(token);
+    public Mono<Token> refreshToken(@RequestBody final Token token) {
+        final Token newToken = this.tokenService.renew(token);
         return Mono.just(newToken);
     }
 }

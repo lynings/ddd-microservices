@@ -1,0 +1,26 @@
+server:
+  port: 7890
+
+spring:
+  profiles: local
+
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+
+eureka:
+  client:
+    eureka-server-connect-timeout-seconds: 30
+    serviceUrl:
+      defaultZone: http://localhost:8010/eureka/
+
+
+jwt:
+  secret: xfk!@#$%^&*()xfk!@#$%^&*()xfk!@#$%^&*()
+
+logging:
+  level:
+    org.springframework.cloud.gateway: debug

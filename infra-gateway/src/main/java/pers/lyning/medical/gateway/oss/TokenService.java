@@ -2,20 +2,20 @@ package pers.lyning.medical.gateway.oss;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pers.lyning.medical.gateway.gateway.acl.patient.Patient;
-import pers.lyning.medical.gateway.gateway.acl.patient.PatientClient;
+import pers.lyning.medical.gateway.client.patient.Patient;
+import pers.lyning.medical.gateway.client.patient.PatientClient;
 
 /**
  * @author lyning
  */
 @Service
-public class OssService {
+public class TokenService {
 
     private final JwtProvider jwtProvider;
     private final PatientClient patientClient;
 
     @Autowired
-    public OssService(final JwtProvider jwtProvider, final PatientClient patientClient) {
+    public TokenService(final JwtProvider jwtProvider, final PatientClient patientClient) {
         this.jwtProvider = jwtProvider;
         this.patientClient = patientClient;
     }

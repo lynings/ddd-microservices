@@ -1,26 +1,27 @@
-server:
-  port: 7890
-
 spring:
+  profiles:
+    active: local
+
   application:
     name: gateway
-  cloud:
-    gateway:
-      discovery:
-        locator:
-          enabled: true
-          lower-case-service-id: true
 
-eureka:
-  client:
-    eureka-server-connect-timeout-seconds: 30
-    serviceUrl:
-      defaultZone: http://localhost:8010/eureka/
-
+feign:
+  # 启动 okhttp
+  okhttp:
+    enabled: true
+  # gzip
+  compression:
+    request:
+      enabled: true
+      # 配置压缩支持的 MIME type
+      mime-types: application/json
+      # 配置压缩数据大小的下限
+      min-request-size: 2048
+    response:
+      enabled: true
+  # 启动 熔断器
+  hystrix:
+    enabled: true
 
 jwt:
   secret: xfk!@#$%^&*()xfk!@#$%^&*()xfk!@#$%^&*()
-
-logging:
-  level:
-    org.springframework.cloud.gateway: debug

@@ -1,0 +1,32 @@
+sourceSets {
+    apidocument {
+        java {
+            compileClasspath += sourceSets.main.output + configurations.testCompile
+            runtimeClasspath += output + compileClasspath + configurations.testRuntime
+            srcDir file('src/apidocument/java')
+        }
+        resources.srcDirs file('src/apidocument/resources')
+    }
+}
+
+
+idea {
+    module {
+        testSourceDirs += sourceSets.apidocument.java.srcDirs
+        testResourceDirs += sourceSets.apidocument.resources.srcDirs
+        scopes.TEST.plus += [configurations.apidocumentCompile]
+    }
+}
+
+task apidocument(type: Test) {
+    description = 'Runs the apidocument tests.'
+    group = 'verification'
+    testClassesDirs = sourceSets.apidocument.output.classesDirs
+    classpath = sourceSets.apidocument.runtimeClasspath
+    outputs.upToDateWhen { false }
+}
+
+check.dependsOn apidocument
+
+// spring rest doc 
+apply from: rootProject.file('auto-rest-doc.gradle')

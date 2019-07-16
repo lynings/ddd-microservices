@@ -1,0 +1,55 @@
+apply plugin: 'org.asciidoctor.convert'
+
+configurations {
+    jsondoclet
+}
+
+ext {
+    javadocJsonDir = file("$buildDir/generated-javadoc-json")
+    snippetsDir = file("$buildDir/generated-snippets")
+}
+
+dependencies {
+    testCompile group: 'capital.scalable', name: 'spring-auto-restdocs-core', version: '2.0.5',
+            'org.junit.jupiter:junit-jupiter-api',
+            'org.junit.jupiter:junit-jupiter-params',
+            'org.junit.jupiter:junit-jupiter-engine',
+            'org.springframework.restdocs:spring-restdocs-webtestclient'
+    
+    jsondoclet group: 'capital.scalable', name: 'spring-auto-restdocs-json-doclet', version: '2.0.5'
+}
+
+task jsonDoclet(type: Javadoc, dependsOn: compileJava) {
+    source = sourceSets.main.allJava
+    classpath = sourceSets.main.compileClasspath
+    destinationDir = javadocJsonDir
+    options.docletpath = configurations.jsondoclet.files.asType(List)
+    options.doclet = 'capital.scalable.restdocs.jsondoclet.ExtractDocumentationAsJsonDoclet'
+    options.memberLevel = JavadocMemberLevel.PACKAGE
+}
+
+apidocument {
+    systemProperty 'org.springframework.restdocs.outputDir', snippetsDir
+    systemProperty 'org.springframework.restdocs.javadocJsonDir', javadocJsonDir
+
+    useJUnitPlatform {
+        includeEngines 'junit-jupiter'
+    }
+    
+    dependsOn jsonDoclet
+}
+
+asciidoctor {
+    inputs.dir snippetsDir
+    options backend: 'html', doctype: 'book'
+    attributes 'source-highlighter': 'highlightjs', 'snippets': snippetsDir
+    dependsOn apidocument
+}
+
+bootJar {
+    dependsOn asciidoctor
+    // 这里 可以通过浏览器键入 http(s)://ip:port/docs/api-guide.html 访问
+    from("${asciidoctor.outputDir}/html5") {
+        into 'BOOT-INF/classes/public/docs'
+    }
+}

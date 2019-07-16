@@ -1,0 +1,7 @@
+= Sample API Documentation
+:toc: right
+:toclevels: 2
+
+[[resources-token-doc]]
+== Token
+include::{snippets}/token-doc/apply-token/auto-section.adoc[]

@@ -1,6 +1,8 @@
-package pers.lyning.medical.gateway.gateway.acl.patient;
+package pers.lyning.medical.gateway.client.patient;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
@@ -8,6 +10,8 @@ import lombok.Setter;
  */
 @Setter
 @Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Permission {
 
     private String url;
