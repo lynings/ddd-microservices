@@ -1,8 +1,15 @@
 package pers.lyning.medical.corestandard.ddd.support.domain;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import java.io.Serializable;
 
 /**
  * @author lyning
@@ -10,17 +17,13 @@ import javax.persistence.*;
 @Embeddable
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
-public class AggregateId {
+@Setter
+@Getter
+public class AggregateId implements Serializable {
 
-    @Id
+    private static final long serialVersionUID = -9135851751899830923L;
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(columnDefinition = "bigint")
-    @Getter
-    @Setter
     private Long aggregateId;
-
-    public Long getId() {
-        return this.aggregateId;
-    }
 }
