@@ -26,7 +26,8 @@ import java.util.ArrayList;
 @WebFluxTest
 class TokenApiDoc extends BaseIntegrationTest {
 
-    public static final String URI = "/tokens";
+    private static final String URI = "/tokens";
+
     @MockBean
     private PatientClient patientClientMock;
     @SpyBean
@@ -61,7 +62,7 @@ class TokenApiDoc extends BaseIntegrationTest {
         // when
         final WebTestClient.ResponseSpec responseSpec = this.client
                 .post()
-                .uri(URI)
+                .uri(URI + "/renews")
                 .accept(MediaType.APPLICATION_JSON_UTF8)
                 .body(BodyInserters.fromObject(token))
                 .exchange();
