@@ -5,7 +5,7 @@ import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-import pers.lyning.medical.corestandard.model.support.jpa.LocalDateTimeConverter;
+import pers.lyning.medical.corestandard.model.support.LocalDateTimeConverter;
 
 import javax.persistence.Column;
 import javax.persistence.Convert;
@@ -15,9 +15,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
- * Created by Blink on 8/19/2018 AD.
- *
- * @author Blink
+ * @author lyning
  */
 @Getter
 @Setter
@@ -25,6 +23,7 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditingEntityListener.class)
 public abstract class AbstractEntity implements Serializable {
 
+    private static final long serialVersionUID = 6084350028326131726L;
     /**
      * 记录创建时间
      */
