@@ -1,5 +1,6 @@
 package pers.lyning.medical.gateway.oss;
 
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pers.lyning.medical.gateway.client.patient.Patient;
@@ -13,6 +14,7 @@ import java.util.Map;
  * @author lyning
  */
 @Setter
+@Getter
 @NoArgsConstructor
 public class Payload {
 
@@ -28,9 +30,9 @@ public class Payload {
 
     public Map<String, Object> asMap() {
         final Map<String, Object> map = new HashMap<>();
-        map.put("name", Payload.this.name);
-        map.put("username", Payload.this.username);
-        map.put("permissions", Payload.this.permissions);
+        map.put("name", this.name);
+        map.put("username", this.username);
+        map.put("permissions", this.permissions);
         return map;
     }
 }

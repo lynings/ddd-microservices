@@ -53,9 +53,7 @@ public class AuthenticationFilter implements GlobalFilter {
             throw AuthenticationException.throwUnauthorized();
         }
 
-        try {
-            this.jwtProvider.validate(token);
-        } catch (final Exception e) {
+        if (!this.jwtProvider.validate(token)) {
             throw AuthenticationException.throwForbidden();
         }
     }
