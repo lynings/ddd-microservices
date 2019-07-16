@@ -19,5 +19,7 @@ dependencies {
 
     testCompile 'com.h2database:h2:1.4.199'
 }
+// 集成 junit5 和 测试覆盖率
+apply from: rootProject.file('junit5-coverage.gradle')
 // 集成 spring rest doc
 apply from: rootProject.file('api-document.gradle')
