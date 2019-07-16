@@ -1,0 +1,19 @@
+apply plugin: 'jacoco'
+
+test {
+    useJUnitPlatform()
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        html.enabled true
+    }
+}
+check.dependsOn jacocoTestReport
+
+dependencies {
+    testCompile 'org.junit.jupiter:junit-jupiter-api',
+            'org.junit.jupiter:junit-jupiter-params',
+            'org.junit.jupiter:junit-jupiter-engine'
+}
