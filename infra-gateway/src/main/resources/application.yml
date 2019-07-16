@@ -22,6 +22,3 @@ feign:
   # 启动 熔断器
   hystrix:
     enabled: true
-
-jwt:
-  secret: xfk!@#$%^&*()xfk!@#$%^&*()xfk!@#$%^&*()

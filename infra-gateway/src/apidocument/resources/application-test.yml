@@ -4,4 +4,9 @@ spring:
   profiles: test
 
 jwt:
+  # 密钥
   secret: xfk!@#$%^&*()xfk!@#$%^&*()xfk!@#$%^&*()
+  # 七天
+  expiration: 604800
+  # 续约30天
+  renew-expiration: 2592000
