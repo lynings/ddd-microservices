@@ -6,9 +6,9 @@ spring:
   # 数据源
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/medical_order?character=utf8mb4&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://172.17.0.2:3306/medical_order?character=utf8mb4&serverTimezone=Asia/Shanghai
     username: root
-    password: qaz748596123.
+    password: 123456
 
     # Spring boot 2 专用配置数据源 Hikari
     hikari:
@@ -36,4 +36,5 @@ spring:
     password: guest
 
 logging:
-  level: debug
+  level:
+    '*': debug

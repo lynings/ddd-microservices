@@ -15,3 +15,6 @@ dependencies {
 
             'org.springframework.boot:spring-boot-devtools'
 }
+
+// 集成 gradle docker plugin
+apply from: rootProject.file('docker.gradle')

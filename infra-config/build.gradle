@@ -9,3 +9,6 @@ dependencies {
             'org.springframework.cloud:spring-cloud-config-monitor',
             'org.springframework.cloud:spring-cloud-starter-bus-amqp'
 }
+
+// 集成 gradle docker plugin
+apply from: rootProject.file('docker.gradle')

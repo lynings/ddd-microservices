@@ -3,6 +3,7 @@ plugins {
     id 'jacoco'
     id 'org.springframework.boot' version '2.1.6.RELEASE'
     id 'org.asciidoctor.convert' version '1.5.3'
+    id 'com.palantir.docker' version '0.22.1'
 }
 
 repositories {

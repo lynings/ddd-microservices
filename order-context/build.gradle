@@ -17,3 +17,6 @@ dependencies {
 
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
+
+// 集成 gradle docker plugin
+apply from: rootProject.file('docker.gradle')

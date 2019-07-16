@@ -11,3 +11,6 @@ bootJar {
 dependencies {
     compile 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server'
 }
+
+// 集成 gradle docker plugin
+apply from: rootProject.file('docker.gradle')

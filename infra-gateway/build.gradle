@@ -23,3 +23,5 @@ dependencies {
 apply from: rootProject.file('junit5-coverage.gradle')
 // 集成 spring rest doc
 apply from: rootProject.file('api-document.gradle')
+// 集成 gradle docker plugin
+apply from: rootProject.file('docker.gradle')
