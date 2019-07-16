@@ -44,15 +44,15 @@ DDD 实践
     - [ ] 模块边界
     - [ ] 分包原则
     - [ ] 各层职责
-- [ ] 单元测试环境
+- [x] 单元测试环境
     - [x] assertJ 集成
     - [x] jacoco
     - [x] junit 5
-    - [ ] demo
+    - [x] demo
 - [ ] 集成测试环境
     - [x] h2
-    - [ ] spring boot test
-    - [ ] demo
+    - [x] spring boot test
+    - [x] demo
     - [ ] contract test
 - [ ] CI 
 - [ ] CD
