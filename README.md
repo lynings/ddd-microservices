@@ -57,3 +57,4 @@ DDD 实践
 - [ ] CI 
 - [ ] CD
 - [ ] Docker
+- [ ] k8s
