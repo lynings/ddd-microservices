@@ -57,4 +57,8 @@ DDD 实践
 - [ ] CI 
 - [ ] CD
 - [ ] Docker
+    - [x] gradle docker plugin
+    - [x] 服务 docker 化
+    - [x] 一键构建
+    - [ ] 配置中心 ip 获取问题
 - [ ] k8s
