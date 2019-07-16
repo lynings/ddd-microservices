@@ -23,7 +23,6 @@ public class OrderAppServiceImpl implements OrderAppService {
     @Override
     public Long placeOrder(final OrderCommand orderCommand) {
         final User user = this.patientClient.obtainById(orderCommand.getPatientId());
-        System.out.println(user);
         return user.getId();
     }
 }
