@@ -16,5 +16,11 @@ dependencies {
             'org.springframework.boot:spring-boot-devtools'
 }
 
+// 集成 数据库版本控制工具
+apply from: rootProject.file('flyway.gradle')
+// 集成 junit5 和 测试覆盖率
+apply from: rootProject.file('junit5-coverage.gradle')
+// 集成 spring rest doc
+apply from: rootProject.file('api-document.gradle')
 // 集成 gradle docker plugin
 apply from: rootProject.file('docker.gradle')

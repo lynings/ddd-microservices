@@ -45,24 +45,3 @@ subprojects {
         annotationProcessor 'org.projectlombok:lombok:1.18.8'
     }
 }
-
-["order-context", "patient-context", "nursing-context", "nurse-context"].each { service ->
-    project(":$service") {
-        apply plugin: 'application'
-
-        dependencies {
-            runtime 'mysql:mysql-connector-java:5.1.47'
-
-            compile 'org.flywaydb:flyway-core:5.2.4',
-                    // 依赖 ddd 规范
-                    project(":core-standard")
-
-
-            testCompile('org.springframework.boot:spring-boot-starter-test') {
-                exclude group: 'junit', module: 'junit;'
-            }
-
-            testCompile 'com.h2database:h2:1.4.199'
-        }
-    }
-}

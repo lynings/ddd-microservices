@@ -1,0 +1,7 @@
+dependencies {
+    runtime 'mysql:mysql-connector-java:5.1.47'
+
+    compile 'org.flywaydb:flyway-core:5.2.4',
+            // 依赖 核心规范
+            project(":core-standard")
+}

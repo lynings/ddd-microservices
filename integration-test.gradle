@@ -27,3 +27,11 @@ task integrationTest(type: Test) {
 }
 
 check.dependsOn integrationTest
+
+dependencies {
+    testCompile('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'junit', module: 'junit;'
+    }
+    
+    testCompile 'com.h2database:h2:1.4.199'
+}
