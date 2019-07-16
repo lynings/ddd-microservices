@@ -4,4 +4,5 @@
 
 [[resources-token-doc]]
 == Token
-include::{snippets}/token-doc/apply-token/auto-section.adoc[]
+include::{snippets}/token-api-doc/apply/auto-section.adoc[]
+include::{snippets}/token-api-doc/renew/auto-section.adoc[]
