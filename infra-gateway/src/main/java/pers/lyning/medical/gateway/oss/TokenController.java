@@ -28,13 +28,19 @@ public class TokenController {
      * @return
      */
     @PostMapping
-    public Mono<Token> applyToken(@RequestBody final ApplyTokenCommand applyTokenCommand) {
+    public Mono<Token> apply(@RequestBody final ApplyTokenCommand applyTokenCommand) {
         final Token token = this.tokenService.apply(applyTokenCommand);
         return Mono.just(token);
     }
 
-    @PostMapping("/refresh")
-    public Mono<Token> refreshToken(@RequestBody final Token token) {
+    /**
+     * 续租 token
+     *
+     * @param token
+     * @return
+     */
+    @PostMapping("/renews")
+    public Mono<Token> renew(@RequestBody final Token token) {
         final Token newToken = this.tokenService.renew(token);
         return Mono.just(newToken);
     }
