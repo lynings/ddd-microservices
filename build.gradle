@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'jacoco'
     id 'org.springframework.boot' version '2.1.6.RELEASE'
+    id 'org.asciidoctor.convert' version '1.5.3'
 }
 
 repositories {
@@ -72,10 +73,7 @@ subprojects {
                     
                     'org.junit.jupiter:junit-jupiter-api',
                     'org.junit.jupiter:junit-jupiter-params',
-                    'org.junit.jupiter:junit-jupiter-engine',
-                    
-                    'org.springframework.restdocs:spring-restdocs-mockmvc',
-                    'org.springframework.restdocs:spring-restdocs-webtestclient'
+                    'org.junit.jupiter:junit-jupiter-engine'
         }
     }
 }
