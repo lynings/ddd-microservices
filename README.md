@@ -62,3 +62,43 @@ DDD 实践
     - [x] 一键构建
     - [ ] 配置中心 ip 获取问题
 - [ ] k8s
+
+## 环境
+- 在容器中启动 mysql
+```bash
+docker run --rm -d -e MYSQL_ROOT_PASSWORD=123456 \
+      -v mysql-8.0.5-volume:/var/lib/mysql \
+      -p 23333:3306 mysql:8.0.15
+```
+```bash
+# 查看 docker 中的 mysql 容器的 IP
+sudo docker inspect  mysql-container-id | grep IPAddress
+```
+
+### 软件安装指南
+
+#### k8s
+这里选择 minikube 来搭建本地单机版的 k8s 集群。
+
+- [安装 VisualBox](https://www.virtualbox.org/wiki/Downloads)
+- [安装 kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+- [安装 Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/)
+
+- VisualBox 直接下载安装就可以
+- kubectl 和 minikube 最好设置代理下载（代理设置参考：export HTTPS_PROXY="http://127.0.0.1:1087"）
+- kubectl 在安装之前，确保 8080 端口没有被占用，不然会报错（`error: unable to parse the server version: invalid character '<' looking for beginning of value`）
+- minikube start 用于启动本地的 k8s 集群，启动过程中需要下载依赖，下载之前最好设置代理
+- minikube start 运行完成之后，执行 minikube dashboard 就可以查看在浏览器查看 k8s 的控制台
+- 运行 minikube dashboard 之前如果没有 minikube start，会报错（`Unable to enable dashboard: [command runner: getting ssh client for bootstrapper: Error dialing tcp via ssh client: dial tcp 127.0.0.1:22: connect: connection refused]` 或者 `kube-system:kubernetes-dashboard is not running: Error getting kubernetes client: getting clientset: kubeConfig: auth info "minikube" does not exist`）
+
+### 运行
+build 镜像
+```bash
+gradle docker
+``` 
+---
+push 镜像 到仓库
+```bash
+gradle dockerTagsPush
+``` 
+---
