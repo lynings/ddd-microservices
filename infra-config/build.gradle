@@ -3,6 +3,11 @@ apply plugin: 'org.springframework.boot'
 
 mainClassName = 'pers.lyning.medical.config.ConfigApplication'
 
+bootJar {
+    baseName = 'config-server'
+    version = '0.0.1'
+}
+
 dependencies {
     compile 'org.springframework.boot:spring-boot-starter-actuator',
             'org.springframework.boot:spring-boot-starter-security',

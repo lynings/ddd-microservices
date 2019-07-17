@@ -3,7 +3,7 @@ spring:
     active: local
 
   application:
-    name: gateway
+    name: gateway-server
 
 feign:
   # 启动 okhttp

@@ -1,4 +1,4 @@
-FROM registry.cn-hangzhou.aliyuncs.com/springcloud-cn/java:8u172-jre-alpine
+FROM registry.cn-shenzhen.aliyuncs.com/ddd-microservices/java:8u172-jre-alpine
 ARG JAR_FILE
 ENV PROFILE local
 

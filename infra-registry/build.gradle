@@ -4,8 +4,8 @@ apply plugin: 'org.springframework.boot'
 mainClassName = 'pers.lynings.medical.registry.RegistryApplication'
 
 bootJar {
-    baseName = 'infra-registry'
-    version = '0.1'
+    baseName = 'registry-server'
+    version = '0.0.1'
 }
 
 dependencies {

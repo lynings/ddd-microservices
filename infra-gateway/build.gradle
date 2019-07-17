@@ -3,6 +3,11 @@ apply plugin: 'org.springframework.boot'
 
 mainClassName = 'pers.lyning.medical.gateway.GatewayApplication'
 
+bootJar {
+    baseName = 'gateway-server'
+    version = '0.0.1'
+}
+
 dependencies {
     // jwt tool
     compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1',
