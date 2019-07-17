@@ -1,8 +1,5 @@
-server:
-  port: 7890
-
 spring:
-  profiles: local
+  profiles: docker
 
   cloud:
     gateway:
@@ -15,7 +12,7 @@ eureka:
   client:
     eureka-server-connect-timeout-seconds: 30
     serviceUrl:
-      defaultZone: http://localhost:8010/eureka/
+      defaultZone: http://${EUREKA_SERVER_HOST}:${EUREKA_SERVER_PORT}/eureka/
 
 
 jwt:

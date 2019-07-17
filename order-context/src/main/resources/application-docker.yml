@@ -1,7 +1,5 @@
-server:
-  port: 8090
 spring:
-  profiles: local
+  profiles: docker
 
   # 数据源
   datasource:
@@ -35,6 +33,10 @@ spring:
     username: guest
     password: guest
 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${EUREKA_SERVER_HOST}:${EUREKA_SERVER_PORT}/eureka/
 
 logging:
   level:

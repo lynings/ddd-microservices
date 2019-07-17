@@ -36,7 +36,7 @@ feign:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://${EUREKA_SERVER_HOST}:${EUREKA_SERVER_PORT}/eureka/
+      defaultZone: http://localhost:8010/eureka/
 
 # 设置饥饿加载 避免第一次加载特别慢
 ribbon:

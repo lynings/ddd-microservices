@@ -1,8 +1,5 @@
-server:
-  port: 8010
-
 spring:
-  profiles: local
+  profiles: docker
 
 eureka:
   instance:
@@ -11,5 +8,5 @@ eureka:
     register-with-eureka: false
     fetch-registry: false
     service-url:
-      default-zone: http://${eureka.instance.hostname}:${server.port}/eureka/
+      default-zone: http://${EUREKA_SERVER_HOST}:${EUREKA_SERVER_PORT}/eureka/
 

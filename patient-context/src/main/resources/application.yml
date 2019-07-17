@@ -32,11 +32,6 @@ feign:
   hystrix:
     enabled: true
 
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://${EUREKA_SERVER_HOST}:${EUREKA_SERVER_PORT}/eureka/
-
 # 设置饥饿加载 避免第一次加载特别慢
 ribbon:
   eager-load:

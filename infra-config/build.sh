@@ -3,5 +3,5 @@
 
 docker run -p 9090:9090 --rm \
 -e JAVA_OPTS='-server -Xmx256M' \
--e PROFILE='local' \
+-e PROFILE='docker' \
 ddd-microservices/config-server
