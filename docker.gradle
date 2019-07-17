@@ -2,7 +2,8 @@ apply plugin: 'com.palantir.docker'
 
 docker {
     dependsOn build
-    name "${project.group}/${bootJar.baseName}"
+    name "${project.group}.${bootJar.baseName}"
     files bootJar.archivePath
+    tag "${bootJar.baseName}", "registry.cn-shenzhen.aliyuncs.com/ddd-microservices/${bootJar.baseName}:${bootJar.version}"
     buildArgs(['JAR_FILE': "${bootJar.archiveName}"])
 }
