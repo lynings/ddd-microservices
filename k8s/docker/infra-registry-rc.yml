@@ -1,0 +1,49 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: registry-server
+  namespace: ddd-microservices
+  labels:
+    app: registry-server
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: registry-server
+    spec:
+      containers:
+        - name: registry-server
+          image: registry.cn-shenzhen.aliyuncs.com/ddd-microservices/registry-server:0.0.1
+          imagePullPolicy: Always
+          resources:
+            requests:
+              cpu: 500m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+          env:
+            - name: PROFILE
+              value: "docker"
+            - name: SERVER_PORT
+              value: "8080"
+            - name: EUREKA_SERVER_HOST
+              value: "{{VM_IP}}"
+            - name: EUREKA_SERVER_PORT
+              value: "8010"
+            - name: JAVA_OPTS
+              value: "
+-server \
+-XX:+PrintGCDetails \
+-XX:+PrintTenuringDistribution \
+-XX:+PrintGCTimeStamps \
+-XX:+HeapDumpOnOutOfMemoryError \
+-XX:HeapDumpPath=/ \
+-Xloggc:/gc.log \
+-XX:+UseGCLogFileRotation \
+-XX:NumberOfGCLogFiles=5 \
+-XX:GCLogFileSize=10M"
+          ports:
+            - name: http
+              containerPort: 8080

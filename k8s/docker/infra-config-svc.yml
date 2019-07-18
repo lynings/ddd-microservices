@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: config-server
+  namespace: ddd-microservices
+  labels:
+    service: config-server
+spec:
+  selector:
+    app: config-server
+  ports:
+    - name: http
+      port: 9090
+      targetPort: 8080
+  clusterIP: 10.96.0.2
+  externalIPs:
+    - {{VM_IP}}
