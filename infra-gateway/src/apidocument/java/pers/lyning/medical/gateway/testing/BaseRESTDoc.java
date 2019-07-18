@@ -33,7 +33,7 @@ import static org.springframework.restdocs.webtestclient.WebTestClientRestDocume
 @ActiveProfiles("test")
 @ComponentScan(basePackages = {"pers.lyning.medical.gateway"})
 @ExtendWith({RestDocumentationExtension.class, SpringExtension.class})
-public class BaseIntegrationTest {
+public class BaseRESTDoc {
 
     protected WebTestClient client;
 

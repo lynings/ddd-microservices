@@ -16,7 +16,7 @@ import pers.lyning.medical.gateway.oss.ApplyTokenCommand;
 import pers.lyning.medical.gateway.oss.JwtProvider;
 import pers.lyning.medical.gateway.oss.Payload;
 import pers.lyning.medical.gateway.oss.Token;
-import pers.lyning.medical.gateway.testing.BaseIntegrationTest;
+import pers.lyning.medical.gateway.testing.BaseRESTDoc;
 
 import java.util.ArrayList;
 
@@ -24,7 +24,7 @@ import java.util.ArrayList;
  * @author lyning
  */
 @WebFluxTest
-class TokenApiDoc extends BaseIntegrationTest {
+class TokenApiDoc extends BaseRESTDoc {
 
     private static final String URI = "/tokens";
 
@@ -39,7 +39,7 @@ class TokenApiDoc extends BaseIntegrationTest {
         final String username = "admin";
         final String password = "admin";
 
-        final ArrayList<Permission> permissions = Lists.newArrayList(new Permission("/patients", "link.get.user", "get"));
+        final ArrayList<Permission> permissions = Lists.newArrayList(new Permission("/patients", "link.get.patient", "get"));
         final Patient patient = new Patient(username, username, permissions);
         BDDMockito.doReturn(patient).when(this.patientClientMock).obtainByUsername(username);
         // when
@@ -80,7 +80,7 @@ class TokenApiDoc extends BaseIntegrationTest {
     }
 
     private Payload preparePayload() {
-        final ArrayList<Permission> permissions = Lists.newArrayList(new Permission("/patients", "link.get.user", "get"));
+        final ArrayList<Permission> permissions = Lists.newArrayList(new Permission("/patients", "link.get.patient", "get"));
         final Patient patient = new Patient("admin", "admin", permissions);
         return new Payload(patient);
     }

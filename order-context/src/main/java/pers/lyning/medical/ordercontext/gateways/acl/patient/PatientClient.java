@@ -1,4 +1,4 @@
-package pers.lyning.medical.ordercontext.gateways.acl.user;
+package pers.lyning.medical.ordercontext.gateways.acl.patient;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,5 +17,5 @@ public interface PatientClient {
      * @return 患者信息
      */
     @GetMapping("/patients/{id}")
-    User obtainById(@PathVariable("id") Long id);
+    Patient obtainById(@PathVariable("id") Long id);
 }

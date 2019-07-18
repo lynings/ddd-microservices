@@ -1,4 +1,4 @@
-package pers.lyning.medical.ordercontext.gateways.acl.user;
+package pers.lyning.medical.ordercontext.gateways.acl.patient;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,7 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class User {
+public class Patient {
 
     private Long id;
 }

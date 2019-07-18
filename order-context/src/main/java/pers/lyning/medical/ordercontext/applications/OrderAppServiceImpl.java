@@ -2,8 +2,8 @@ package pers.lyning.medical.ordercontext.applications;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pers.lyning.medical.ordercontext.gateways.acl.user.PatientClient;
-import pers.lyning.medical.ordercontext.gateways.acl.user.User;
+import pers.lyning.medical.ordercontext.gateways.acl.patient.Patient;
+import pers.lyning.medical.ordercontext.gateways.acl.patient.PatientClient;
 import pers.lyning.medical.ordercontext.gateways.ohs.data.OrderCommand;
 import pers.lyning.medical.ordercontext.interfaces.OrderAppService;
 
@@ -22,7 +22,7 @@ public class OrderAppServiceImpl implements OrderAppService {
 
     @Override
     public Long placeOrder(final OrderCommand orderCommand) {
-        final User user = this.patientClient.obtainById(orderCommand.getPatientId());
-        return user.getId();
+        final Patient patient = this.patientClient.obtainById(orderCommand.getPatientId());
+        return patient.getId();
     }
 }

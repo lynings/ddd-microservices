@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class PayloadFactory {
 
     public static Payload create() {
-        final ArrayList<Permission> permissions = Lists.newArrayList(new Permission("/patients", "link.get.user", "get"));
+        final ArrayList<Permission> permissions = Lists.newArrayList(new Permission("/patients", "link.get.patient", "get"));
         final Patient patient = new Patient("admin", "admin", permissions);
         return new Payload(patient);
     }
