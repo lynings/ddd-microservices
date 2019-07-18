@@ -84,7 +84,7 @@ sudo docker inspect  mysql-container-id | grep IPAddress
 - [安装 kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 - [安装 Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/)
 
-- VisualBox 直接下载安装就可以
+- VisualBox 直接下载安装就可以（minikube 依赖 VisualBox）
 - kubectl 和 minikube 最好设置代理下载（代理设置参考：export HTTPS_PROXY="http://127.0.0.1:1087"）
 - kubectl 在安装之前，确保 8080 端口没有被占用，不然会报错（`error: unable to parse the server version: invalid character '<' looking for beginning of value`）
 - minikube start 用于启动本地的 k8s 集群，启动过程中需要下载依赖，下载之前最好设置代理
@@ -102,3 +102,29 @@ push 镜像 到仓库
 gradle dockerTagsPush
 ``` 
 ---
+minikube 启动
+
+[minikube 代理问题解决方案](https://github.com/kubernetes/minikube/issues/3517)
+```bash
+# 设置代理(具体ip和端口因配置而异)
+export http_proxy="http://127.0.0.1:1087"; export HTTP_PROXY="http://127.0.0.1:1087"; export https_proxy="http://127.0.0.1:1087"; export HTTPS_PROXY="http://127.0.0.1:1087"
+# 启动 minikube 并设置 代理，10.0.2.2 是 VisualBox  的地址，这个地址连接的是宿主机的 ip 127.0.0.1
+minikube start  --docker-env HTTP_PROXY=http://10.0.2.2:1087 --docker-env HTTPS_PROXY=http://10.0.2.2:1087 --docker-env NO_PROXY=localhost,127.0.0.1,10.96.0.0/12,192.168.99.0/24,192.168.39.0/24
+```
+---
+启动 ReplicationController 再启动 Service
+```bash
+kubectl create -f infra-registry-rc.yml
+kubectl create -f infra-registry-svc.yml
+
+kubectl create -f infra-config-rc.yml
+kubectl create -f infra-config-svc.yml
+
+kubectl create -f infra-gateway-rc.yml
+kubectl create -f infra-gateway-svc.yml
+
+...
+``` 
+
+### 问题
+- [ ] minikube start 内部容器 ip 如何设置 [[Feature Request] Specify a static IP for VirtualBox VMs](https://github.com/docker/machine/issues/1709)
