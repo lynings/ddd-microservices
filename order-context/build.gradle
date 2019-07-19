@@ -20,7 +20,9 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-devtools'
     compile 'io.github.openfeign:feign-okhttp'
 
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'junit', module: 'junit;'
+    }
 }
 
 // 集成 数据库版本控制工具

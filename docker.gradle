@@ -5,5 +5,5 @@ docker {
     name "${project.group}.${bootJar.baseName}"
     files bootJar.archivePath
     tag "${bootJar.baseName}", "registry.cn-shenzhen.aliyuncs.com/ddd-microservices/${bootJar.baseName}:${bootJar.version}"
-    buildArgs(['JAR_FILE': "${bootJar.archiveName}"])
+    buildArgs(['JAR_FILE': "${bootJar.archiveName}", 'SERVICE_NAME': "${bootJar.baseName}"])
 }

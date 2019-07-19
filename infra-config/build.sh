@@ -2,6 +2,7 @@
 ../gradlew :infra-config:docker
 
 docker run -p 9090:9090 --rm \
+-d \
 -e JAVA_OPTS='-server -Xmx256M' \
 -e PROFILE='docker' \
-ddd-microservices/config-server
+pers.lyning.medical.config-server
