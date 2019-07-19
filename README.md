@@ -128,3 +128,4 @@ kubectl create -f infra-gateway-svc.yml
 
 ### 问题
 - [ ] minikube start 内部容器 ip 如何设置 [[Feature Request] Specify a static IP for VirtualBox VMs](https://github.com/docker/machine/issues/1709)
+- [ ] 集成 docker，会出先所有连接注册中心的服务，其访问格式为 `container-id + service-name + service-port`，这个问题会导致服务之间的通信出现异常，解决方案是为所有的client加上 `eureka.instance.prefer-ip-address: true`，优先使用 ip 地址连接注册中心
