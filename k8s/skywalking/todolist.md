@@ -30,11 +30,11 @@
    
 - [ ] docker 部署方案
     - [x] spring cloud server 的 Dockerfile 加入 skywalking-agent:6.2.0 images
-    - [x] 配置并启动 apache/skywalking-oap-server:6.2.0
+    - [x] 配置并启动 apache/skywalking-oap-server:6.2.0 ->  -> `docker run --restart always -d -e SW_STORAGE=h2 apache/skywalking-oap-server`
         - [x] 配置端口
         - [x] 配置IP
         - [x] 启动镜像
-    - [x] 配置并启动 apache/skywalking-ui:6.2.0
+    - [x] 配置并启动 apache/skywalking-ui:6.2.0 ->  -> `docker run -p 8080:8080 --restart always -d -e SW_OAP_ADDRESS=oap:12800 apache/skywalking-ui`
         - [x] 配置端口
         - [x] 配置IP
         - [x] 启动镜像
@@ -43,9 +43,9 @@
         - [x] 将将变量传入 javaagent
         - [x] 启动镜像
     - [ ] 仓储
-        - [x] H2
+        - [x] H2 -> `docker run --restart always -d -e SW_STORAGE=h2 apache/skywalking-oap-server`
         - [ ] Mysql
-        - [ ] ES 
+        - [ ] ES 6.5 -> `docker run --restart always -d -e SW_STORAGE=elasticsearch -e SW_STORAGE_ES_CLUSTER_NODES=elasticsearch:9200 apache/skywalking-oap-server`
 - [ ] k8s 部署方案
 ## skywalking + docker 部署 拓扑图
 ![skywalking + docker 部署 拓扑图](./skywalking-docker.png)
