@@ -48,14 +48,13 @@ public class AuthenticationFilter implements GlobalFilter {
         return chain.filter(exchange);
     }
 
-    private void validate(final Token token) {
-        if (Objects.isNull(token)) {
-            throw AuthenticationException.throwUnauthorized();
-        }
+    private String findHostFrom(final Route route) {
+        return route.getUri()
+                .getHost();
+    }
 
-        if (!this.jwtProvider.validate(token)) {
-            throw AuthenticationException.throwForbidden();
-        }
+    private Route getRoute(final ServerWebExchange exchange) {
+        return exchange.getRequiredAttribute(ServerWebExchangeUtils.GATEWAY_ROUTE_ATTR);
     }
 
     private boolean ignoreRequest(final Route route) {
@@ -65,10 +64,6 @@ public class AuthenticationFilter implements GlobalFilter {
                 .anyMatch(host::endsWith);
     }
 
-    private Route getRoute(final ServerWebExchange exchange) {
-        return exchange.getRequiredAttribute(ServerWebExchangeUtils.GATEWAY_ROUTE_ATTR);
-    }
-
     private Token lookupTokenFrom(final HttpHeaders headers) {
         final String token = headers.getFirst(JwtProvider.HEADER);
         return Optional.ofNullable(token)
@@ -76,8 +71,13 @@ public class AuthenticationFilter implements GlobalFilter {
                 .orElse(null);
     }
 
-    private String findHostFrom(final Route route) {
-        return route.getUri()
-                .getHost();
+    private void validate(final Token token) {
+        if (Objects.isNull(token)) {
+            throw AuthenticationException.throwUnauthorized();
+        }
+
+        if (!this.jwtProvider.validate(token)) {
+            throw AuthenticationException.throwForbidden();
+        }
     }
 }
