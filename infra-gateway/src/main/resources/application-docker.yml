@@ -13,7 +13,8 @@ eureka:
     eureka-server-connect-timeout-seconds: 30
     serviceUrl:
       defaultZone: http://${EUREKA_SERVER_HOST}:${EUREKA_SERVER_PORT}/eureka/
-
+  instance:
+    prefer-ip-address: true
 
 jwt:
   # 密钥
@@ -25,4 +26,4 @@ jwt:
 
 logging:
   level:
-    org.springframework.cloud.gateway: debug
+    '*': INFO

@@ -5,8 +5,8 @@ spring:
       server:
         git:
           uri: git@github.com:lynings/spring-config-demo.git
-          username:
-          password:
+          username: 645464704@qq.com
+          password: qaz748596123.
           search-paths: CONFIG
           delete-untracked-branches: true
           timeout: 30

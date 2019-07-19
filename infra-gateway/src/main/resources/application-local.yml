@@ -4,13 +4,6 @@ server:
 spring:
   profiles: local
 
-  cloud:
-    gateway:
-      discovery:
-        locator:
-          enabled: true
-          lower-case-service-id: true
-
 eureka:
   client:
     eureka-server-connect-timeout-seconds: 30
@@ -28,4 +21,4 @@ jwt:
 
 logging:
   level:
-    org.springframework.cloud.gateway: debug
+    '*': debug

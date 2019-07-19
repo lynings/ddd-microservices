@@ -33,11 +33,12 @@ spring:
     username: guest
     password: guest
 
-
 eureka:
   client:
     serviceUrl:
       defaultZone: http://${EUREKA_SERVER_HOST}:${EUREKA_SERVER_PORT}/eureka/
+  instance:
+    prefer-ip-address: true
 
 logging:
   level:
