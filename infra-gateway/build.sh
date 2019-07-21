@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-../gradlew :infra-gateway:docker
+../gradlew :infra-gateway:docker &&
 
 docker run -p 7890:7890 --rm \
 -d \

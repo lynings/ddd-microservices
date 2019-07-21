@@ -24,6 +24,15 @@ jwt:
   # 续约30天
   renew-expiration: 2592000
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+
 logging:
   level:
     '*': INFO
