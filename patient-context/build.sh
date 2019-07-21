@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-../gradlew :patient-context:docker
+../gradlew :patient-context:docker &&
 
 docker run -p 8008:8008 --rm \
 -d \

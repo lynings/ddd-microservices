@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-../gradlew :order-context:docker
+../gradlew :order-context:docker &&
 
 docker run -p 8090:8090 --rm \
 -d \

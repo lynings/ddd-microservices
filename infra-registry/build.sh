@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-../gradlew :infra-registry:docker
+../gradlew :infra-registry:docker &&
 
 docker run -p 8010:8010 --rm \
 -d \
