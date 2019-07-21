@@ -5,7 +5,7 @@ mainClassName = 'pers.lyning.medical.ordercontext.OrderContextApplication'
 
 bootJar {
     baseName = 'order-server'
-    version = '0.0.1'
+    version = '0.0.1-SNAPSHOT'
 }
 
 dependencies {

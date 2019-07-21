@@ -5,7 +5,7 @@ mainClassName = 'pers.lynings.medical.registry.RegistryApplication'
 
 bootJar {
     baseName = 'registry-server'
-    version = '0.0.1'
+    version = '0.0.1-SNAPSHOT'
 }
 
 dependencies {

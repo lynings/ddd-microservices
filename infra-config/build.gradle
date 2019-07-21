@@ -5,7 +5,7 @@ mainClassName = 'pers.lyning.medical.config.ConfigApplication'
 
 bootJar {
     baseName = 'config-server'
-    version = '0.0.1'
+    version = '0.0.1-SNAPSHOT'
 }
 
 dependencies {
