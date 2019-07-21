@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: apm-admin
+  security:
+    user:
+      name: xfk
+      password: xfk123
+
+  boot:
+    admin:
+      discovery:
+        ignored-services: apm-admin
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    leaseRenewalIntervalInSeconds: 10
+    health-check-url-path: /actuator/health
+    metadata-map:
+      startup: ${random.int}    #needed to trigger info and endpoint update after restart
+  client:
+    registryFetchIntervalSeconds: 5
+    serviceUrl:
+      defaultZone: http://${EUREKA_SERVER_HOST:localhost}:${EUREKA_SERVER_PORT:8010}/eureka/
+
+management:
+  endpoint:
+    health:
+      show-details: ALWAYS

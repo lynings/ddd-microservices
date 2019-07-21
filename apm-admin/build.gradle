@@ -1,0 +1,21 @@
+apply plugin: 'application'
+apply plugin: 'org.springframework.boot'
+
+mainClassName = 'pers.lynings.medical.apmadmin.ApmAdminApplication'
+
+bootJar {
+    baseName = 'apm-admin'
+    version = '0.0.1-SNAPSHOT'
+}
+
+dependencies {
+    compile 'de.codecentric:spring-boot-admin-starter-server:2.1.6',
+            'de.codecentric:spring-boot-admin-starter-client:2.1.6',
+            'org.springframework.boot:spring-boot-starter-actuator',
+            'org.jolokia:jolokia-core:1.6.2',
+            'org.springframework.boot:spring-boot-starter-security',
+            'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+}
+
+// 集成 gradle docker plugin
+apply from: rootProject.file('docker.gradle')
