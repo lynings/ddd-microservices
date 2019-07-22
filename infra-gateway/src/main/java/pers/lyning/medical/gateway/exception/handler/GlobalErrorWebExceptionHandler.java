@@ -1,21 +1,18 @@
 package pers.lyning.medical.gateway.exception.handler;
 
+import org.springframework.boot.autoconfigure.web.ErrorProperties;
 import org.springframework.boot.autoconfigure.web.ResourceProperties;
-import org.springframework.boot.autoconfigure.web.reactive.error.AbstractErrorWebExceptionHandler;
-import org.springframework.boot.web.reactive.error.DefaultErrorAttributes;
+import org.springframework.boot.autoconfigure.web.reactive.error.DefaultErrorWebExceptionHandler;
 import org.springframework.boot.web.reactive.error.ErrorAttributes;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.codec.ServerCodecConfigurer;
-import org.springframework.stereotype.Component;
-import org.springframework.web.reactive.function.BodyInserters;
-import org.springframework.web.reactive.function.server.*;
-import reactor.core.publisher.Mono;
+import org.springframework.web.reactive.function.server.RouterFunction;
+import org.springframework.web.reactive.function.server.ServerResponse;
 
-import java.util.Map;
+import static org.springframework.web.reactive.function.server.RequestPredicates.all;
+import static org.springframework.web.reactive.function.server.RouterFunctions.route;
 
 /**
  * 统一异常处理
@@ -24,38 +21,18 @@ import java.util.Map;
  */
 @Configuration
 @Order(-2)
-public class GlobalErrorWebExceptionHandler extends AbstractErrorWebExceptionHandler {
+public class GlobalErrorWebExceptionHandler extends DefaultErrorWebExceptionHandler {
 
-    public GlobalErrorWebExceptionHandler(final GlobalErrorAttributes globalErrorAttributes,
+    public GlobalErrorWebExceptionHandler(final ErrorAttributes errorAttributes,
                                           final ApplicationContext applicationContext,
                                           final ServerCodecConfigurer serverCodecConfigurer) {
-        super(globalErrorAttributes, new ResourceProperties(), applicationContext);
+        super(errorAttributes, new ResourceProperties(), new ErrorProperties(), applicationContext);
         super.setMessageWriters(serverCodecConfigurer.getWriters());
         super.setMessageReaders(serverCodecConfigurer.getReaders());
     }
 
     @Override
     protected RouterFunction<ServerResponse> getRoutingFunction(final ErrorAttributes errorAttributes) {
-        return RouterFunctions.route(RequestPredicates.all(), this::renderErrorResponse);
-    }
-
-    private Mono<ServerResponse> renderErrorResponse(final ServerRequest request) {
-
-        final Map<String, Object> errorPropertiesMap = this.getErrorAttributes(request, false);
-
-        return ServerResponse.status(HttpStatus.BAD_REQUEST)
-                .contentType(MediaType.APPLICATION_JSON_UTF8)
-                .body(BodyInserters.fromObject(errorPropertiesMap));
-    }
-
-    @Component
-    static class GlobalErrorAttributes extends DefaultErrorAttributes {
-
-        @Override
-        public Map<String, Object> getErrorAttributes(final ServerRequest request,
-                                                      final boolean includeStackTrace) {
-            return super.getErrorAttributes(
-                    request, includeStackTrace);
-        }
+        return route(all(), this::renderErrorResponse);
     }
 }
