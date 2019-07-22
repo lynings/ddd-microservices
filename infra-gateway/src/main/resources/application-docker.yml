@@ -35,4 +35,5 @@ management:
 
 logging:
   level:
-    '*': INFO
+    org.springframework: ERROR
+    pers.lynings: INFO

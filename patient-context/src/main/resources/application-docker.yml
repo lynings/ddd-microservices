@@ -40,6 +40,16 @@ eureka:
   instance:
     prefer-ip-address: true
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+
 logging:
   level:
-    'pers.*': debug
+    org.springframework: ERROR
+    pers.lynings: INFO

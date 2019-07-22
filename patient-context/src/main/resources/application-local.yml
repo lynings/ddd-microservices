@@ -41,6 +41,16 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8010/eureka/
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+
 logging:
   level:
-    'pers.*': debug
+    org.springframework: ERROR
+    pers.lynings: INFO

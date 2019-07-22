@@ -38,4 +38,5 @@ spring:
 
 logging:
   level:
-    '*': debug
+    org.springframework: ERROR
+    pers.lynings: INFO
