@@ -8,7 +8,6 @@ ENV PROFILE docker
 ENV SERVICE_NAME ${SERVICE_NAME}
 
 ADD ./${JAR_FILE} /opt/app.jar
-EXPOSE 8080
 ENTRYPOINT java ${JAVA_OPTS} \
 -Djava.security.egd=file:/dev/./urandom \
 -Duser.timezone=Asia/Shanghai \

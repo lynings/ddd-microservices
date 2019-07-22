@@ -9,7 +9,7 @@ ENV PROFILE docker
 ENV SERVICE_NAME ${SERVICE_NAME}
 
 ADD ./${JAR_FILE} /opt/app.jar
-EXPOSE 8080
+
 ENTRYPOINT java ${JAVA_OPTS} -javaagent:/skywalking/agent/skywalking-agent.jar \
 -Dskywalking.trace.ignore_path=/actuator/** \
 -Dskywalking.agent.service_name=${SERVICE_NAME} \
