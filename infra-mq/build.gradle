@@ -1,0 +1,14 @@
+apply plugin: 'application'
+apply plugin: 'org.springframework.boot'
+
+jar {
+    baseName = 'infra-mq'
+    version = '0.0.1-SNAPSHOT'
+}
+
+dependencies {
+    compile 'org.springframework.boot:spring-boot-starter-webflux',
+            'org.springframework.cloud:spring-cloud-starter-stream-rabbit'
+
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+}

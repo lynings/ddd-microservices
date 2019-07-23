@@ -1,0 +1,23 @@
+server:
+  port: 1212
+
+spring:
+  profiles:
+    active: local
+  application:
+    name: notification-service
+
+  messages:
+    basename: i18n/messages
+    encoding: UTF-8
+  aop:
+    auto: true
+    proxy-target-class: true
+  resources:
+    chain:
+      compressed: true
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 30MB
+      location: ${user.dir}

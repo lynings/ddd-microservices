@@ -1,0 +1,55 @@
+spring:
+  profiles: docker
+
+  # 数据源
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://172.17.0.2:3306/medical_project?character=utf8mb4&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+
+    # Spring boot 2 专用配置数据源 Hikari
+    hikari:
+      maximum-pool-size: 50
+      minimum-idle: 5
+
+  # spring data jpa configure
+  jpa:
+    hibernate:
+      # 如果结构发生改变，会自动同步表结构
+      ddl-auto: update
+    show-sql: true
+    open-in-view: true
+    database-platform: org.hibernate.dialect.MySQL57Dialect
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+
+  # rabbitmq 配置
+  rabbitmq:
+    port: 5672
+    host: localhost
+    username: guest
+    password: guest
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${EUREKA_SERVER_HOST}:${EUREKA_SERVER_PORT}/eureka/
+  instance:
+    prefer-ip-address: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+logging:
+  level:
+    org.springframework: ERROR
+    pers.lynings: INFO

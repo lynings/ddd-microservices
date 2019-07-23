@@ -1,0 +1,30 @@
+server:
+  port: 1212
+
+spring:
+  application:
+    name: infra-mq
+
+  messages:
+    basename: i18n/messages
+    encoding: UTF-8
+  aop:
+    auto: true
+    proxy-target-class: true
+  resources:
+    chain:
+      compressed: true
+
+  # rabbitmq 配置
+  rabbitmq:
+    port: 5672
+    host: localhost
+    username: guest
+    password: guest
+
+  cloud:
+    stream:
+      bindings:
+        place-order:
+          destination: orders-exchange
+          group: orders-queue

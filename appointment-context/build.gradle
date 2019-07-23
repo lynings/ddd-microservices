@@ -1,0 +1,19 @@
+apply plugin: 'application'
+apply plugin: 'org.springframework.boot'
+
+mainClassName = 'pers.lyning.medical.appointmentcontext.AppointmentContextApplication'
+
+bootJar {
+    baseName = 'appointment-server'
+    version = '0.0.1-SNAPSHOT'
+}
+
+dependencies {
+    compile 'org.springframework.boot:spring-boot-starter-actuator',
+            'org.springframework.boot:spring-boot-starter-security',
+            'org.springframework.cloud:spring-cloud-config-monitor',
+            'org.springframework.cloud:spring-cloud-starter-bus-amqp'
+}
+
+// 集成 gradle docker plugin
+apply from: rootProject.file('docker.gradle')
