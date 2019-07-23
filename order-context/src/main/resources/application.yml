@@ -5,6 +5,22 @@ spring:
     name: order-service
   profiles:
     active: local
+
+  messages:
+    basename: i18n/messages
+    encoding: UTF-8
+  aop:
+    auto: true
+    proxy-target-class: true
+  resources:
+    chain:
+      compressed: true
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 30MB
+      location: ${user.dir}
+
   # 开启 bus 追踪，用于热刷新
   cloud:
     bus:

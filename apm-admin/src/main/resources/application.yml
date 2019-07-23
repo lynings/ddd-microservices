@@ -1,6 +1,11 @@
 spring:
   application:
     name: apm-admin
+
+  resources:
+    chain:
+      compressed: true
+
   security:
     user:
       name: xfk

@@ -10,7 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class OrderCommand {
+public class PlaceOrderCommand {
 
     /**
      * 患者id

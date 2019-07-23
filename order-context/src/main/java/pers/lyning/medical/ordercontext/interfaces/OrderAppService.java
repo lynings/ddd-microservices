@@ -1,6 +1,6 @@
 package pers.lyning.medical.ordercontext.interfaces;
 
-import pers.lyning.medical.ordercontext.gateways.ohs.data.OrderCommand;
+import pers.lyning.medical.ordercontext.gateways.ohs.data.PlaceOrderCommand;
 
 /**
  * @author lyning
@@ -8,10 +8,17 @@ import pers.lyning.medical.ordercontext.gateways.ohs.data.OrderCommand;
 public interface OrderAppService {
 
     /**
+     * 完成订单
+     *
+     * @param orderId 订单id
+     */
+    void complete(Long orderId);
+
+    /**
      * 下单
      *
      * @param orderCommand
      * @return
      */
-    Long placeOrder(OrderCommand orderCommand);
+    Long placeOrder(PlaceOrderCommand orderCommand);
 }

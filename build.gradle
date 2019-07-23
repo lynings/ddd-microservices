@@ -13,6 +13,15 @@ repositories {
     mavenCentral()
 }
 
+allprojects {
+    configurations {
+        developmentOnly
+        runtimeClasspath {
+            extendsFrom developmentOnly
+        }
+    }
+}
+
 subprojects {
     apply plugin: 'java'
     apply plugin: 'idea'
@@ -22,7 +31,7 @@ subprojects {
 
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
-
+    
     dependencyManagement {
         imports {
             mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Greenwich.SR2'

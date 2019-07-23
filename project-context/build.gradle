@@ -1,6 +1,31 @@
 apply plugin: 'application'
 apply plugin: 'org.springframework.boot'
 
-dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+mainClassName = 'pers.lyning.medical.projectcontext.ProjectContextApplication'
+
+bootJar {
+    baseName = 'project-server'
+    version = '0.0.1-SNAPSHOT'
 }
+
+dependencies {
+    compile 'org.springframework.boot:spring-boot-starter-webflux',
+            'org.springframework.cloud:spring-cloud-starter-openfeign',
+            'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client',
+
+            'org.springframework.boot:spring-boot-starter-actuator',
+            'org.springframework.boot:spring-boot-starter-security',
+            'org.springframework.cloud:spring-cloud-starter-config',
+            'org.springframework.cloud:spring-cloud-starter-bus-amqp'
+
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+}
+
+// 集成 数据库版本控制工具
+apply from: rootProject.file('flyway.gradle')
+// 集成 junit5 和 测试覆盖率
+apply from: rootProject.file('junit5-coverage.gradle')
+// 集成 spring rest doc
+apply from: rootProject.file('api-document.gradle')
+// 集成 gradle docker plugin
+apply from: rootProject.file('docker.gradle')

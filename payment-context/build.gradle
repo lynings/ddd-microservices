@@ -1,6 +1,17 @@
 apply plugin: 'application'
 apply plugin: 'org.springframework.boot'
 
+mainClassName = 'pers.lyning.medical.paymentcontext.PaymentContextApplication'
+
+bootJar {
+    baseName = 'payment-server'
+    version = '0.0.1-SNAPSHOT'
+}
+
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile 'org.springframework.boot:spring-boot-starter-webflux',
+            'org.springframework.boot:spring-boot-starter-actuator',
+            'org.springframework.cloud:spring-cloud-starter-stream-rabbit'
+
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
 }

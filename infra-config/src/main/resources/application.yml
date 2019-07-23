@@ -4,3 +4,17 @@ spring:
   application:
     name: config-server
 
+  messages:
+    basename: i18n/messages
+    encoding: UTF-8
+  aop:
+    auto: true
+    proxy-target-class: true
+  resources:
+    chain:
+      compressed: true
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 30MB
+      location: ${user.dir}
