@@ -8,7 +8,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/medical_project?character=utf8mb4&serverTimezone=Asia/Shanghai
     username: root
-    password: qaz748596123.
+    password:
 
     # Spring boot 2 专用配置数据源 Hikari
     hikari:
